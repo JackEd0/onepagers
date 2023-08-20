@@ -1,0 +1,199 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Barber</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .logo {
+            font-size: 36px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .menu li {
+            margin-left: 20px;
+        }
+
+        .menu li a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .menu li a:hover {
+            color: #ff9900;
+        }
+
+        .hero {
+            height: 80vh;
+            background-image: url(https://hasthemes.com/blog/best-barber-html-templates/);
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            text-align: center;
+            text-shadow: 2px 2px 4px black;
+        }
+
+        .hero h1 span {
+            color: #ff9900;
+        }
+
+        .services {
+            padding: 40px 0;
+        }
+
+        .services h2 {
+            text-align: center;
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .services .cards {
+            display: grid; /* Use grid layout for the cards */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Make the cards responsive and fit the available space */
+            grid-gap: 20px; /* Add some gap between the cards */
+        }
+
+        .services .card {
+
+            background-color: white; /* Use white background for the cards */
+            border-radius: 10px; /* Add some rounded corners to the cards */
+            box-shadow: 2px 2px 4px #ccc; /* Add some shadow to the cards */
+
+        }
+
+        .services .card img {
+
+           width :100%;
+           height :200px;
+           object-fit :cover;
+           border-radius :10px 10px 0 0; /* Add some rounded corners to the top of the images */
+
+       }
+
+       .services.card.content{
+
+           padding :20px; /* Add some padding to the card content */
+
+       }
+
+       .services.card.content h3{
+
+           font-size :24px; /* Set the font size of the card titles */
+
+       }
+
+       .services.card.content p{
+
+           margin-top :10px; /* Add some margin to the top of the card paragraphs */
+           text-align :justify; /* Align the text to both sides of the card paragraphs */
+           line-height :1.5; /* Set the line height of the card paragraphs */
+           font-size :18px; /* Set the font size of the card paragraphs */
+
+       }
+
+       @media (max-width :768px) { /* Use media queries to make the website responsive on smaller screens */
+           .menu{
+               display:none; /* Hide the menu on smaller screens */
+           }
+
+           .hero h1{
+               font-size :48px; /* Reduce the font size of the hero title on smaller screens */
+           }
+
+
+       }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+      <div class="navbar"> <!-- Create a navbar for the website -->
+          <div class="logo">Modern<span>Barber</span></div> <!-- Create a logo for the website -->
+          <ul class="menu"> <!-- Create a menu for the website -->
+              <li><a href="#">Home</a></li> <!-- Create a menu item for home page -->
+              <li><a href="#">Services</a></li> <!-- Create a menu item for services page -->
+              <li><a href="#">About</a></li> <!-- Create a menu item for about page -->
+              <li><a href="#">Contact</a></li> <!-- Create a menu item for contact page -->
+          </ul>
+      </div>
+
+      <div class="hero"> <!-- Create a hero section for the website -->
+          <h1>Welcome to Modern<span>Barber</span></h1> <!-- Create a hero title for the website -->
+      </div>
+
+      <div class="services"> <!-- Create a services section for the website -->
+          <h2>Our Services</h2> <!-- Create a services title for the website -->
+          <div class="cards"> <!-- Create a cards container for the website -->
+              <div class="card"> <!-- Create a card for haircut service -->
+                  <img src=^2^ alt="Haircut"> <!-- Add an image for haircut service -->
+                  <div class="content"> <!-- Add a content container for haircut service -->
+                      <h3>Haircut</h3> <!-- Add a title for haircut service -->
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis lorem eu lorem consequat.</p> <!-- Add a paragraph for haircut service -->
+                  </div>
+              </div>
+
+              <div class="card"> <!-- Create a card for shave service -->
+                  <img src=^3^ alt="Shave"> <!-- Add an image for shave service -->
+                  <div class="content"> <!-- Add a content container for shave service -->
+                      <h3>Shave</h3> <!-- Add a title for shave service -->
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis lorem eu lorem consequat.</p> <!-- Add a paragraph for shave service -->
+                  </div>
+              </div>
+
+              <div class="card"> <!-- Create a card for beard trim service -->
+                  <img src=^4^ alt="Beard Trim"> <!-- Add an image for beard trim service -->
+                  <div class="content"> <!-- Add a content container for beard trim service -->
+                      <h3>Beard Trim</h3> <!-- Add a title for beard trim service -->
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis lorem eu lorem consequat.</p> <!-- Add a paragraph for beard trim service -->
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <div class="footer"> <!-- Create a footer section for the website -->
+          <p>ModernBarber © 2023. All rights reserved.</p> <!-- Add some footer text for the website -->
+          <p>Address: 123 Main Street, Montreal, QC, Canada</p> <!-- Add some address information for the website -->
+          <p>Opening Hours: Mon-Fri 9am-6pm, Sat-Sun 10am-4pm</p> <!-- Add some opening hours information for the website -->
+      </div>
+    </div>
+
+    <script>
+        // You can add some JavaScript code here to make the website more interactive and dynamic.
+    </script>
+</body>
+</html>

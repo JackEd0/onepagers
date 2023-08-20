@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>ScooterHub - Your Ultimate Scooter Source</title>
+</head>
+<body>
+    <style>
+        /* Reset some default styles */
+        body,
+        h1,
+        h2,
+        h3,
+        p,
+        ul,
+        li {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Styling for header and navigation */
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav li {
+            margin-right: 20px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #00a0df;
+        }
+
+        /* Styling for hero section */
+        .hero {
+            background-image: url('scooter-bg-4.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            text-align: center;
+            padding: 150px 0;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 40px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #00a0df;
+            color: #fff;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #0079a6;
+        }
+
+        /* Styling for scooter section */
+        .scooter-list {
+            padding: 40px;
+            background-color: #f7f7f7;
+            text-align: center;
+        }
+
+        .scooter {
+            margin-bottom: 30px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .scooter img {
+            max-width: 500px;
+            height: auto;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .scooter h3 {
+            font-size: 24px;
+            margin: 15px 0;
+        }
+
+        .scooter p {
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .details-button {
+            display: inline-block;
+            padding: 5px 15px;
+            background-color: #00a0df;
+            color: #fff;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .details-button:hover {
+            background-color: #0079a6;
+        }
+
+        /* Styling for about section */
+        .about {
+            padding: 40px;
+            text-align: center;
+        }
+
+        /* Styling for contact section */
+        .contact {
+            padding: 40px;
+            background-color: #f7f7f7;
+            text-align: center;
+        }
+
+        /* Styling for footer */
+        footer {
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">ScooterHub</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#scooters">Scooters</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section id="home" class="hero text-center text-white py-5">
+            <h1 class="display-4">Your Ultimate Scooter Source</h1>
+            <p class="lead">Discover a world of stylish and efficient scooters for your urban adventures.</p>
+            <a href="#scooters" class="btn btn-primary btn-lg">Explore Scooters</a>
+        </section>
+        <section id="scooters" class="scooter-list py-5">
+            <div class="container">
+                <h2 class="text-center mb-4">Featured Scooters</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                            <img src="scooter-bg-2.jpg" class="card-img-top" alt="Scooter 1">
+                            <div class="card-body">
+                                <h3 class="card-title">Model X</h3>
+                                <p class="card-text">Experience the thrill of the city with our Model X scooter.</p>
+                                <a href="#" class="btn btn-primary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                            <img src="scooter-bg-3.jpg" class="card-img-top" alt="Scooter 2">
+                            <div class="card-body">
+                                <h3 class="card-title">Urban Cruiser</h3>
+                                <p class="card-text">Cruise through the streets with the stylish Urban Cruiser.</p>
+                                <a href="#" class="btn btn-primary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add more scooter items here -->
+                </div>
+            </div>
+        </section>
+        <section id="about" class="about py-5">
+            <div class="container">
+                <h2 class="text-center mb-4">About Us</h2>
+                <p class="text-center">We are dedicated to providing you with top-quality scooters that match your lifestyle.</p>
+                <p class="text-center">Our mission is to offer eco-friendly transportation solutions for urban commuters.</p>
+            </div>
+        </section>
+        <section id="contact" class="contact py-5">
+            <div class="container">
+                <h2 class="text-center mb-4">Contact Us</h2>
+                <p class="text-center">Visit our store at:</p>
+                <p class="text-center">123 Scooter Street, Cityville</p>
+                <p class="text-center">Opening Hours:</p>
+                <p class="text-center">Mon - Fri: 9 AM - 6 PM</p>
+                <p class="text-center">Sat: 10 AM - 4 PM</p>
+                <p class="text-center">Email: info@scooterhub.com</p>
+            </div>
+        </section>
+    </main>
+    <footer class="text-center py-3">
+        <p>&copy; 2023 ScooterHub. All rights reserved.</p>
+    </footer>
+</body>
+</html>

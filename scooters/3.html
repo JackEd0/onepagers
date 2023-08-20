@@ -1,0 +1,206 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scooter Shop</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .logo {
+            font-size: 36px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .menu li {
+            margin-left: 20px;
+        }
+
+        .menu li a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .menu li a:hover {
+            color: #ff9900;
+        }
+
+        .hero {
+            height: 80vh;
+            background-image: url(https://www.template.net/web-templates/website-templates/motorcycle-website-themes/); /* Use an image of a scooter as the background */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            text-align: center;
+            text-shadow: 2px 2px 4px black;
+        }
+
+        .hero h1 span {
+            color: #ff9900; /* Use orange color for the word "Scooter" */
+        }
+
+        .products {
+            padding: 40px 0; /* Add some padding to the products section */
+        }
+
+        .products h2 {
+            text-align: center; /* Center the products title */
+            font-size: 48px; /* Set the font size of the products title */
+            margin-bottom: 20px; /* Add some margin to the bottom of the products title */
+        }
+
+        .products .cards {
+            display: grid; /* Use grid layout for the cards */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Make the cards responsive and fit the available space */
+            grid-gap: 20px; /* Add some gap between the cards */
+        }
+
+        .products .card {
+
+            background-color :white; /* Use white background for the cards */
+           border-radius :10px; /* Add some rounded corners to the cards */
+           box-shadow :2px 2px 4px #ccc; /* Add some shadow to the cards */
+           overflow :hidden; /* Hide the overflow of the cards */
+
+       }
+
+       .products.card.image{
+
+           width :100%;
+           height :200px;
+           object-fit :cover;
+           transition :transform 0.3s ease-in-out; /* Add some transition effect to the card images */
+
+       }
+
+       .products.card.image:hover{
+
+           transform :scale(1.1); /* Zoom in the card images on hover */
+
+       }
+
+       .products.card.content{
+
+           padding :20px; /* Add some padding to the card content */
+
+       }
+
+       .products.card.content h3{
+
+           font-size :24px; /* Set the font size of the card titles */
+
+       }
+
+       .products.card.content p{
+
+           margin-top :10px; /* Add some margin to the top of the card paragraphs */
+           text-align :justify; /* Align the text to both sides of the card paragraphs */
+           line-height :1.5; /* Set the line height of the card paragraphs */
+           font-size :18px; /* Set the font size of the card paragraphs */
+
+       }
+
+       @media (max-width :768px) { /* Use media queries to make the website responsive on smaller screens */
+           .menu{
+               display:none; /* Hide the menu on smaller screens */
+           }
+
+           .hero h1{
+               font-size :48px; /* Reduce the font size of the hero title on smaller screens */
+           }
+
+
+       }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+      <div class="navbar"> <!-- Create a navbar for the website -->
+          <div class="logo">Scooter<span>Shop</span></div> <!-- Create a logo for the website -->
+          <ul class="menu"> <!-- Create a menu for the website -->
+              <li><a href="#">Home</a></li> <!-- Create a menu item for home page -->
+              <li><a href="#">Products</a></li> <!-- Create a menu item for products page -->
+              <li><a href="#">About</a></li> <!-- Create a menu item for about page -->
+              <li><a href="#">Contact</a></li> <!-- Create a menu item for contact page -->
+          </ul>
+      </div>
+
+      <div class="hero"> <!-- Create a hero section for the website -->
+          <h1>Welcome to Scooter<span>Shop</span></h1> <!-- Create a hero title for the website -->
+      </div>
+
+      <div class="products"> <!-- Create a products section for the website -->
+          <h2>Our Products</h2> <!-- Create a products title for the website -->
+          <div class="cards"> <!-- Create a cards container for the website -->
+              <div class="card"> <!-- Create a card for scooter 1 -->
+                  <img src=^2^ alt="Scooter 1" class="image"> <!-- Add an image for scooter 1 -->
+                  <div class="content"> <!-- Add a content container for scooter 1 -->
+                      <h3>Scooter 1</h3> <!-- Add a title for scooter 1 -->
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis lorem eu lorem consequat.</p> <!-- Add a paragraph for scooter 1 -->
+                  </div>
+              </div>
+
+              <div class="card"> <!-- Create a card for scooter 2 -->
+                  <img src=^3^ alt="Scooter 2" class="image"> <!-- Add an image for scooter 2 -->
+                  <div class="content"> <!-- Add a content container for scooter 2 -->
+                      <h3>Scooter 2</h3> <!-- Add a title for scooter 2 -->
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis lorem eu lorem consequat.</p> <!-- Add a paragraph for scooter 2 -->
+                  </div>
+              </div>
+
+              <div class="card"> <!-- Create a card for scooter 3 -->
+                  <img src=^4^ alt="Scooter 3" class="image"> <!-- Add an image for scooter 3 -->
+                  <div class="content"> <!-- Add a content container for scooter 3 -->
+                      <h3>Scooter 3</h3> <!-- Add a title for scooter 3 -->
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis lorem eu lorem consequat.</p> <!-- Add a paragraph for scooter 3 -->
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <div class="footer"> <!-- Create a footer section for the website -->
+          <p>ScooterShop © 2023. All rights reserved.</p> <!-- Add some footer text for the website -->
+          <p>Address: 123 Main Street, Montreal, QC, Canada</p> <!-- Add some address information for the website -->
+          <p>Opening Hours: Mon-Fri 9am-6pm, Sat-Sun 10am-4pm</p> <!-- Add some opening hours information for the website -->
+      </div>
+    </div>
+
+    <script>
+        // You can add some JavaScript code here to make the website more interactive and dynamic.
+    </script>
+</body>
+</html>
