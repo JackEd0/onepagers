@@ -13,6 +13,10 @@ You can see the sites in its best form by using a server. A great example is the
 - Generate a portfolio.
 - Try material design and other popular css frameworks.
 
+### For great background images
+
+Search using `bing` for `background for scooter shop`, or even using `bing-ai`.
+
 ## Prompts
 
 ### Notes
