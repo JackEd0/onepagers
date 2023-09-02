@@ -29,6 +29,9 @@
             background-size: cover;
             height: 300px;
         }
+        .card-link {
+            text-decoration: none;
+        }
     </style>
     <main>
         <section class="hero">
@@ -73,48 +76,61 @@
                 const components = data.components;
                 let output = "";
 
-                // Assuming data is an array of objects
                 pages.forEach(item => {
-                    // const a = document.createElement("a");
-                    // a.href = `${htmlPath}${pageFolder}/${item.folder}/${item.name}/index.html`;
-                    // a.textContent = item.name;
-                    // a.classList.add("file-link");
-
-                    const img = `${htmlPath}${pageFolder}/${item.folder}/${item.name}/cover.jpg`;
+                    const url = `${htmlPath}${pageFolder}/${item.folder}/${item.name}/index.html`;
+                    const img = `${coverPath}${pageFolder}/${item.folder}/${item.name}/cover.jpg`;
                     // const img = `/assets/img/material-design-black.jpg`;
 
-                    // <div class="card-img" style="background-image: url(${img}); "></div>
-
-                    output += `<div class="col">
-                    <div class="card h-100" data-id="${item.name}">
-                        <div class="card-img-top" style="background-image: url(${img});"></div>
-                        <div class="card-body">
-                            <h5 class="card-title">${item.name}</h5>
-                        </div>
-                        <div class="card-footer text-body-secondary">${item.tags.join(" ")}</div>
-                    </div></div>`;
-                    // jsonContent.appendChild(a);
+                    output += `
+                    <div class="col">
+                        <a href="${url}" target="_blank" class="card-link">
+                            <div class="card h-100" data-tags="${item.name} ${item.tags.join(" ")}">
+                                <div class="card-img-top" style="background-image: url(${img});"></div>
+                                <div class="card-body">
+                                    <h5 class="card-title">${item.name}</h5>
+                                </div>
+                                <div class="card-footer text-body-secondary">${item.tags.join(" ")}</div>
+                            </div>
+                        </a>
+                    </div>`;
                 });
 
                 components.forEach(item => {
-                    // const a = document.createElement("a");
-                    // a.href = `${htmlPath}${componentFolder}/${item.folder}/${item.name}/index.html`;
-                    // a.textContent = item.name;
-                    // a.classList.add("file-link");
-                    // jsonContent.appendChild(a);
-                    const img = `/assets/img/material-design-black.jpg`;
-                    // <img src="${img}" class="card-img-top" alt="${item.name}">
-                    output += `<div class="col">
-                    <div class="card h-100" data-id="${item.name}">
-                        <div class="card-img-top" style="background-image: url(${img});"></div>
-                        <div class="card-body">
-                            <h5 class="card-title">${item.name}</h5>
-                        </div>
-                        <div class="card-footer text-body-secondary">${item.tags.join(" ")}</div>
-                    </div></div>`;
+                    const url = `${htmlPath}${componentFolder}/${item.folder}/${item.name}/index.html`;
+                    const img = `${coverPath}${componentFolder}/${item.folder}/${item.name}/cover.jpg`;
+                    // const img = `/assets/img/material-design-black.jpg`;
+
+                    output += `
+                    <div class="col">
+                        <a href="${url}" target="_blank" class="card-link">
+                            <div class="card h-100" data-tags="${item.name} ${item.tags.join(" ")}">
+                                <div class="card-img-top" style="background-image: url(${img});"></div>
+                                <div class="card-body">
+                                    <h5 class="card-title">${item.name}</h5>
+                                </div>
+                                <div class="card-footer text-body-secondary">${item.tags.join(" ")}</div>
+                            </div>
+                        </a>
+                    </div>`;
                 });
 
                 jsonContent.innerHTML = output;
+            }
+
+            function handleSearch(term) {
+                const cards = document.querySelectorAll('.card');
+                const search = term.toLowerCase();
+
+                cards.forEach(card => {
+                    const tags = card.dataset.tags.toLowerCase();
+                    const cardClosestCol = card.closest('.col');
+
+                    if (tags.includes(search)) {
+                        cardClosestCol.style.display = "block";
+                    } else {
+                        cardClosestCol.style.display = "none";
+                    }
+                });
             }
 
             function init() {
@@ -123,6 +139,7 @@
 
             return {
                 init,
+                handleSearch,
             }
         })();
 
@@ -130,6 +147,9 @@
         // Call the function to fetch JSON data when the page loads
         // fetchJsonData();
         document.addEventListener("DOMContentLoaded", moduleOnepager.init);
+        document.querySelector('input').addEventListener('keyup', (e) => {
+            moduleOnepager.handleSearch(e.target.value);
+        });
     </script>
 </body>
 
