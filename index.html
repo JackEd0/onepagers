@@ -32,6 +32,9 @@
         .card-link {
             text-decoration: none;
         }
+        .form-control:focus {
+            box-shadow: none;
+        }
     </style>
     <main>
         <section class="hero">
@@ -39,7 +42,7 @@
         </section>
         <section class="container">
             <div class="mb-5 mt-5">
-                <input type="text" placeholder="Search..." class="form-control" autofocus>
+                <input type="text" placeholder="Search..." class="form-control" id="search" autofocus>
             </div>
 
             <div class="row row-cols-1 row-cols-md-2 g-4 mb-5" id="fileList"></div>
@@ -49,6 +52,7 @@
     <script>
         const moduleOnepager = (function () {
             const jsonFile = "/content/config.json";
+            const jsonContent = document.getElementById('fileList');
 
             // Function to fetch and display JSON data
             function fetchJsonData(callback) {
@@ -67,7 +71,6 @@
 
             // Function to display JSON data
             function displayData(data) {
-                const jsonContent = document.getElementById('fileList');
                 const htmlPath = data.html_folder_path;
                 const coverPath = data.cover_image_path;
                 const pageFolder = data.page_folder_name;
@@ -147,7 +150,7 @@
         // Call the function to fetch JSON data when the page loads
         // fetchJsonData();
         document.addEventListener("DOMContentLoaded", moduleOnepager.init);
-        document.querySelector('input').addEventListener('keyup', (e) => {
+        document.getElementById('search').addEventListener('keyup', (e) => {
             moduleOnepager.handleSearch(e.target.value);
         });
     </script>
