@@ -1,0 +1,42 @@
+{
+    "html_folder_path": "/content/",
+    "cover_image_path": "/content/",
+    "url_template": "html_path/page_type/page_name/page_name.html",
+    "page_folder_name": "pages",
+    "component_folder_name": "components",
+    "pages": [
+        {
+            "name": "portfolio_1",
+            "folder": "portfolios",
+            "tags": [
+                "portfolio",
+                "onepager"
+            ]
+        },
+        {
+            "name": "barber_1",
+            "folder": "barbers",
+            "tags": [
+                "barber",
+                "onepager"
+            ]
+        },
+        {
+            "name": "scooter_1",
+            "folder": "scooters",
+            "tags": [
+                "scooter",
+                "onepager"
+            ]
+        }
+    ],
+    "components": [
+        {
+            "name": "footer_1",
+            "folder": "footers",
+            "tags": [
+                "footer"
+            ]
+        }
+    ]
+}

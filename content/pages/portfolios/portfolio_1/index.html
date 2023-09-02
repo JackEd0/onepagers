@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futuristic Barber Shop</title>
+</head>
+
+<body>
+    <style>
+        /* Reset some default styles */
+        body,
+        h1,
+        h2,
+        h3,
+        p,
+        ul,
+        li {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        /* Styling for header and navigation */
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+        }
+
+        nav li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Styling for hero section */
+        .hero {
+            background-image: url('barbers/barber-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        /* Styling for services section */
+        .services {
+            padding: 40px;
+            background-color: #f0f0f0;
+        }
+
+        .service {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Styling for footer */
+        footer {
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="/content/barbers/barber.html">Barber 1</a></li>
+                <li><a href="/content/barbers/barber2.html">Barber 2</a></li>
+                <li><a href="/content/barbers/barber3.html">Barber 3</a></li>
+                <li><a href="/content/barbers/4.html">Barber 4</a></li>
+                <li><a href="/content/barbers/5.html">Barber 5</a></li>
+                <li><a href="#">#</a></li>
+                <li><a href="/content/trojan/trojan.html">Trojan</a></li>
+                <li><a href="/content/trojan/trojan2.html">Trojan 2</a></li>
+                <li><a href="/content/trojan/verse.html">verse</a></li>
+                <li><a href="#">#</a></li>
+                <li><a href="/content/scooters/1.html">Scooters 1</a></li>
+                <li><a href="/content/scooters/2.html">Scooters 2</a></li>
+                <li><a href="/content/scooters/3.html">Scooters 3</a></li>
+                <li><a href="/content/scooters/4.html">Scooters 4</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <h1>Welcome to the Futuristic Barber Shop</h1>
+            <p>Experience cutting-edge grooming and style in a space-age setting.</p>
+        </section>
+        <section class="services">
+            <h2>Our Services</h2>
+            <div class="service">
+                <h3>Holographic Haircuts</h3>
+                <p>Get a haircut using the latest holographic technology.</p>
+            </div>
+            <div class="service">
+                <h3>Laser Beard Trimming</h3>
+                <p>Precision beard shaping with laser-guided tools.</p>
+            </div>
+            <!-- Add more service items here -->
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Futuristic Barber Shop. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // // Function to fetch the list of files in the "content" folder
+        // function fetchFileList(folderPath, parentElement) {
+        //     // const fileListDiv = document.getElementById("fileList");
+
+        //     // Fetch the list of files in the "content" folder
+        //     fetch(folderPath)
+        //         .then((response) => response.text())
+        //         .then((data) => {
+        //             // Use DOMParser to parse the HTML content of the folder
+        //             const parser = new DOMParser();
+        //             const folderContent = parser.parseFromString(data, "text/html");
+
+        //             // Get all the <a> elements (links) in the folder content
+        //             const links = folderContent.querySelectorAll("a");
+
+        //             // Iterate through the links and create corresponding links in "index.html"
+        //             links.forEach((link) => {
+        //                 const fileName = link.querySelector(".name") ? link.querySelector(".name").textContent : link.textContent;
+        //                 // const fileURL = folderPath + fileName;
+        //                 const fileURL = link.attributes.href.value;
+        //                 if (fileURL === "/") {
+        //                     return;
+        //                 }
+
+        //                 // const isDirectory = link.getAttribute("data-directory") === "true" || link.classList.contains("icon-directory");
+        //                 const isDirectory = link.getAttribute("data-directory") === "true" || link.classList.contains("directory");
+        //                 console.log("isDirectory", isDirectory, link);
+
+        //                 // Create a new <a> element and set its attributes
+        //                 const a = document.createElement("a");
+        //                 a.href = isDirectory ? "#" : fileURL;
+        //                 a.textContent = fileName;
+        //                 a.classList.add(isDirectory ? "folder-link" : "file-link");
+
+        //                 // Append the link to the "fileList" div
+        //                 parentElement.appendChild(a);
+
+        //                 // If it's a directory, recursively display its contents
+        //                 if (isDirectory) {
+        //                     const subfolderPath = folderPath + fileName + "/";
+        //                     const subfolderDiv = document.createElement("div");
+        //                     parentElement.appendChild(subfolderDiv);
+        //                     fetchFileList(subfolderPath, subfolderDiv);
+        //                 }
+        //             });
+        //         })
+        //         .catch((error) => {
+        //             console.error("Error fetching file list:", error);
+        //         });
+        // }
+
+        // // Call the fetchFileList function to populate the list of links
+        // fetchFileList("content/", document.getElementById("fileList"));
+    </script>
+</body>
+
+</html>

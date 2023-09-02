@@ -4,124 +4,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Futuristic Barber Shop</title>
+    <title>Onepagers</title>
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="icon" type="image/png" href="/favicon.png" />
 </head>
 
 <body>
     <style>
-        /* Reset some default styles */
-        body,
-        h1,
-        h2,
-        h3,
-        p,
-        ul,
-        li {
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-        }
-
-        /* Styling for header and navigation */
-        header {
-            background-color: #000;
-            color: #fff;
-            padding: 10px;
-            text-align: center;
-        }
-
-        nav ul {
-            list-style: none;
-        }
-
-        nav li {
-            display: inline;
-            margin-right: 20px;
-        }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        /* Styling for hero section */
         .hero {
-            background-image: url('barbers/barber-bg.jpg');
+            background-image: url('/assets/img/material-design-black.jpg');
             background-size: cover;
             background-position: center;
             color: #fff;
             text-align: center;
             padding: 100px 0;
         }
-
-        /* Styling for services section */
-        .services {
-            padding: 40px;
-            background-color: #f0f0f0;
+        .card {
+            padding: 0;
         }
-
-        .service {
-            background-color: #fff;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Styling for footer */
-        footer {
-            background-color: #000;
-            color: #fff;
-            text-align: center;
-            padding: 10px;
+        .card-img-top {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 300px;
         }
     </style>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="barbers/barber.html">Barber 1</a></li>
-                <li><a href="barbers/barber2.html">Barber 2</a></li>
-                <li><a href="barbers/barber3.html">Barber 3</a></li>
-                <li><a href="barbers/4.html">Barber 4</a></li>
-                <li><a href="barbers/5.html">Barber 5</a></li>
-                <li><a href="#">#</a></li>
-                <li><a href="trojan/trojan.html">Trojan</a></li>
-                <li><a href="trojan/trojan2.html">Trojan 2</a></li>
-                <li><a href="trojan/verse.html">verse</a></li>
-                <li><a href="#">#</a></li>
-                <li><a href="scooters/1.html">Scooters 1</a></li>
-                <li><a href="scooters/2.html">Scooters 2</a></li>
-                <li><a href="scooters/3.html">Scooters 3</a></li>
-                <li><a href="scooters/4.html">Scooters 4</a></li>
-            </ul>
-        </nav>
-    </header>
     <main>
         <section class="hero">
-            <h1>Welcome to the Futuristic Barber Shop</h1>
-            <p>Experience cutting-edge grooming and style in a space-age setting.</p>
+            <h1>Onepagers</h1>
         </section>
-        <section class="services">
-            <h2>Our Services</h2>
-            <div class="service">
-                <h3>Holographic Haircuts</h3>
-                <p>Get a haircut using the latest holographic technology.</p>
+        <section class="container">
+            <div class="mb-5 mt-5">
+                <input type="text" placeholder="Search..." class="form-control" autofocus>
             </div>
-            <div class="service">
-                <h3>Laser Beard Trimming</h3>
-                <p>Precision beard shaping with laser-guided tools.</p>
-            </div>
-            <!-- Add more service items here -->
+
+            <div class="row row-cols-1 row-cols-md-2 g-4 mb-5" id="fileList"></div>
         </section>
     </main>
-    <footer>
-        <p>&copy; 2023 Futuristic Barber Shop. All rights reserved.</p>
-    </footer>
+
+    <script>
+        const moduleOnepager = (function () {
+            const jsonFile = "/content/config.json";
+
+            // Function to fetch and display JSON data
+            function fetchJsonData(callback) {
+                return fetch(jsonFile)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(callback)
+                    .catch(error => {
+                        console.error('There was a problem with the fetch operation:', error);
+                    });
+            }
+
+            // Function to display JSON data
+            function displayData(data) {
+                const jsonContent = document.getElementById('fileList');
+                const htmlPath = data.html_folder_path;
+                const coverPath = data.cover_image_path;
+                const pageFolder = data.page_folder_name;
+                const componentFolder = data.component_folder_name;
+                const pages = data.pages;
+                const components = data.components;
+                let output = "";
+
+                // Assuming data is an array of objects
+                pages.forEach(item => {
+                    // const a = document.createElement("a");
+                    // a.href = `${htmlPath}${pageFolder}/${item.folder}/${item.name}/index.html`;
+                    // a.textContent = item.name;
+                    // a.classList.add("file-link");
+
+                    const img = `${htmlPath}${pageFolder}/${item.folder}/${item.name}/cover.jpg`;
+                    // const img = `/assets/img/material-design-black.jpg`;
+
+                    // <div class="card-img" style="background-image: url(${img}); "></div>
+
+                    output += `<div class="col">
+                    <div class="card h-100" data-id="${item.name}">
+                        <div class="card-img-top" style="background-image: url(${img});"></div>
+                        <div class="card-body">
+                            <h5 class="card-title">${item.name}</h5>
+                        </div>
+                        <div class="card-footer text-body-secondary">${item.tags.join(" ")}</div>
+                    </div></div>`;
+                    // jsonContent.appendChild(a);
+                });
+
+                components.forEach(item => {
+                    // const a = document.createElement("a");
+                    // a.href = `${htmlPath}${componentFolder}/${item.folder}/${item.name}/index.html`;
+                    // a.textContent = item.name;
+                    // a.classList.add("file-link");
+                    // jsonContent.appendChild(a);
+                    const img = `/assets/img/material-design-black.jpg`;
+                    // <img src="${img}" class="card-img-top" alt="${item.name}">
+                    output += `<div class="col">
+                    <div class="card h-100" data-id="${item.name}">
+                        <div class="card-img-top" style="background-image: url(${img});"></div>
+                        <div class="card-body">
+                            <h5 class="card-title">${item.name}</h5>
+                        </div>
+                        <div class="card-footer text-body-secondary">${item.tags.join(" ")}</div>
+                    </div></div>`;
+                });
+
+                jsonContent.innerHTML = output;
+            }
+
+            function init() {
+                return fetchJsonData(displayData);
+            }
+
+            return {
+                init,
+            }
+        })();
+
+
+        // Call the function to fetch JSON data when the page loads
+        // fetchJsonData();
+        document.addEventListener("DOMContentLoaded", moduleOnepager.init);
+    </script>
 </body>
 
 </html>
