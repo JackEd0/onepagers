@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <title>Todo</title>
+</head>
+
+<body>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        html,
+        body {
+            /* background: #f7f1f1; */
+            background: #FF6666;
+            font-size: 1.1rem;
+            font-family: 'Quicksand', sans-serif;
+            height: 100%;
+        }
+
+        @keyframes strikeitem {
+            to {
+                width: calc(100% + 1rem);
+            }
+        }
+
+        #todolist {
+            margin: 4rem auto;
+            margin-top: 0;
+            padding: 2rem 2rem 3rem;
+            max-width: 500px;
+            background: #FF6666;
+            color: #FFF;
+            box-shadow: -20px -20px 0px 0px rgba(100, 100, 100, .1);
+        }
+
+        #todolist h1 {
+            /*text-align:center;*/
+            font-weight: normal;
+            font-size: 2.6rem;
+            letter-spacing: 0.05em;
+            border-bottom: 1px solid rgba(255, 255, 255, .3);
+        }
+
+        #todolist h1 span {
+            display: block;
+            font-size: 0.8rem;
+            margin-bottom: 0.7rem;
+            margin-left: 3px;
+            margin-top: 0.2rem;
+        }
+
+        #todolist .emptylist {
+            margin-top: 2.6rem;
+            text-align: center;
+            letter-spacing: .05em;
+            font-style: italic;
+            opacity: 0.8;
+
+        }
+
+        #todolist ul {
+            margin-top: 2.6rem;
+            list-style: none;
+        }
+
+        #todolist .todolist-move {
+            transition: transform 1s;
+        }
+
+        #todolist li {
+            display: flex;
+            margin: 0 -2rem 4px;
+            padding: 1.1rem 3rem;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        #todolist .actions {
+            flex-shrink: 0;
+            padding-left: 0.7em;
+        }
+
+        #todolist .label {
+            position: relative;
+            transition: opacity .2s linear;
+        }
+
+        #todolist .done .label {
+            opacity: .6;
+        }
+
+        #todolist .done .label:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -.5rem;
+            display: block;
+            width: 0%;
+            height: 1px;
+            background: #FFF;
+            animation: strikeitem .3s ease-out 0s forwards;
+        }
+
+        #todolist .btn-picto {
+            border: none;
+            background: none;
+            -webkit-appearance: none;
+            cursor: pointer;
+            color: #FFF;
+        }
+
+
+        /* FORM */
+        form {
+            margin-top: 3rem;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        form label {
+            min-width: 100%;
+            margin-bottom: .5rem;
+            font-size: 1.3rem;
+        }
+
+        form input {
+            flex-grow: 1;
+            border: none;
+            background: #f7f1f1;
+            padding: 0 1.5em;
+            font-size: initial;
+            width: 150px;
+        }
+
+        form button {
+            padding: 0 1.3rem;
+            border: none;
+            background: #FF6666;
+            color: white;
+            text-transform: uppercase;
+            font-weight: bold;
+            border: 1px solid rgba(255, 255, 255, .3);
+            margin-left: 5px;
+            cursor: pointer;
+            transition: background .2s ease-out;
+        }
+
+        form button:hover {
+            background: #FF5E5E;
+        }
+
+        form input,
+        form button {
+            font-family: 'Quicksand', sans-serif;
+            height: 3rem;
+        }
+
+
+        /* TOOGLE COMPONENT */
+        .togglebutton-wrapper {
+            margin-top: 1em;
+        }
+
+        .togglebutton-wrapper label {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .togglebutton-wrapper input {
+            position: absolute;
+            left: -9999px;
+        }
+
+        .togglebutton-wrapper .togglebutton-label {
+            font-size: .8rem;
+            letter-spacing: .1em
+        }
+
+        .togglebutton-wrapper .tooglebutton-box {
+            position: relative;
+            display: block;
+            margin-left: 0.6em;
+            width: 38px;
+            height: 22px;
+            background: white;
+            /*border:1px solid black;*/
+            border-radius: 999px;
+            cursor: pointer;
+        }
+
+        .togglebutton-wrapper .tooglebutton-box:before {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            display: block;
+            width: 18px;
+            height: 18px;
+            /*border:1px solid #FF6666;*/
+            border-radius: 50%;
+            background: #FF6666;
+            opacity: 0.7;
+            transition: all .2s ease-in-out;
+        }
+
+        .togglebutton-wrapper.togglebutton-focus .tooglebutton-box {
+            box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .togglebutton-wrapper.togglebutton-checked .tooglebutton-box:before {
+            left: calc(100% - 4px - 16px);
+            opacity: 1;
+        }
+
+        .btn-picto {
+            width: 3rem;
+        }
+
+        .btn-picto svg {
+            width: 1rem;
+            height: 1.1rem;
+            margin-bottom: -2px;
+        }
+
+        .switch {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 1rem;
+            background: rgba(255, 255, 255, 0);
+            position: relative;
+            cursor: pointer;
+            border: 1px solid #fff;
+            border-radius: 1rem;
+        }
+
+        .switch::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            width: 1.1rem;
+            height: 1.1rem;
+            border-radius: 50%;
+            background: #fff;
+            transition: all 0.4s ease;
+        }
+
+        .switch::before {
+            content: "";
+            width: 100%;
+            height: 100%;
+            border-radius: inherit;
+            /* background: linear-gradient(330deg, #ff4343 0%, #FF6666 50%, #ff9d9d 100%); */
+            background: #FF6666;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .switch--checked {
+            border: 1px solid #FF6666;
+        }
+
+        .switch--checked::before {
+            opacity: 1;
+        }
+
+        .switch--checked::after {
+            left: 60%;
+            background: #fff;
+        }
+    </style>
+
+    <main id="todolist">
+        <h1>Todo List</h1>
+
+        <form name="newform" id="newform">
+            <input type="text" name="newitem" id="newitem" placeholder="Feed cat...">
+            <button type="submit">Add item</button>
+        </form>
+
+        <ul id="todolist-items">
+            <!-- List items will be added here dynamically -->
+        </ul>
+        <p id="emptylist" class="emptylist" style="display: none;">Your todo list is empty.</p>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var todoList = [
+                { id: 1, label: 'Feed the cat', done: false },
+                { id: 2, label: 'Buy milk', done: false },
+                { id: 3, label: 'Learn JavaScript', done: false }
+            ];
+            var newItemInput = document.getElementById('newitem');
+            var todoListElement = document.getElementById('todolist-items');
+            var formElement = document.getElementById('newform');
+            var emptyListMessage = document.getElementById('emptylist');
+
+            updateList();
+
+            formElement.addEventListener('submit', function (event) {
+                event.preventDefault();
+                addItem(newItemInput.value);
+                newItemInput.value = '';
+            });
+
+            function addItem(label) {
+                var item = {
+                    id: Date.now(),
+                    label: label,
+                    done: false
+                };
+                todoList.push(item);
+                updateList();
+            }
+
+            function updateList() {
+                todoListElement.innerHTML = '';
+                todoList.forEach(function (item) {
+                    var li = document.createElement('li');
+                    li.className = item.done ? 'done' : '';
+                    li.innerHTML = `
+                <span class="label">${item.label}</span>
+                <div class="actions">
+                    <button class="btn-picto" type="button" onclick="markAsDoneOrUndone(${item.id})" aria-label="${item.done ? 'Undone' : 'Done'}" title="${item.done ? 'Undone' : 'Done'}">
+                        <i aria-hidden="true" class="material-icons switch ${item.done ? 'switch--checked' : ''}"></i>
+                    </button>
+                    <button class="btn-picto" type="button" onclick="deleteItemFromList(${item.id})" aria-label="Delete" title="Delete">
+                        <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+                        <svg width="10px" height="10px" viewBox="0 -5 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                            <title>delete</title>
+                            <desc>Created with Sketch Beta.</desc>
+                            <defs></defs>
+                            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+                                <g id="Icon-Set-Filled" sketch:type="MSLayerGroup" transform="translate(-518.000000, -1146.000000)" fill="#FFFFFF">
+                                    <path d="M540.647,1159.24 C541.039,1159.63 541.039,1160.27 540.647,1160.66 C540.257,1161.05 539.623,1161.05 539.232,1160.66 L536.993,1158.42 L534.725,1160.69 C534.331,1161.08 533.692,1161.08 533.298,1160.69 C532.904,1160.29 532.904,1159.65 533.298,1159.26 L535.566,1156.99 L533.327,1154.76 C532.936,1154.37 532.936,1153.73 533.327,1153.34 C533.718,1152.95 534.352,1152.95 534.742,1153.34 L536.981,1155.58 L539.281,1153.28 C539.676,1152.89 540.314,1152.89 540.708,1153.28 C541.103,1153.68 541.103,1154.31 540.708,1154.71 L538.408,1157.01 L540.647,1159.24 L540.647,1159.24 Z M545.996,1146 L528.051,1146 C527.771,1145.98 527.485,1146.07 527.271,1146.28 L518.285,1156.22 C518.074,1156.43 517.983,1156.71 517.998,1156.98 C517.983,1157.26 518.074,1157.54 518.285,1157.75 L527.271,1167.69 C527.467,1167.88 527.723,1167.98 527.979,1167.98 L527.979,1168 L545.996,1168 C548.207,1168 550,1166.21 550,1164 L550,1150 C550,1147.79 548.207,1146 545.996,1146 L545.996,1146 Z" id="delete" sketch:type="MSShapeGroup">
+                                    </path>
+                                </g>
+                            </g>
+                        </svg>
+                    </button>
+                </div>
+                `;
+                    todoListElement.appendChild(li);
+                });
+
+                emptyListMessage.style.display = todoList.length === 0 ? '' : 'none';
+            }
+
+            window.markAsDoneOrUndone = function (id) {
+                var item = todoList.find(function (item) { return item.id === id; });
+                if (item) {
+                    item.done = !item.done;
+                    updateList();
+                }
+            };
+
+            window.deleteItemFromList = function (id) {
+                todoList = todoList.filter(function (item) { return item.id !== id; });
+                updateList();
+            };
+
+            // save todoList to localStorage
+            window.addEventListener('beforeunload', function () {
+                localStorage.setItem('todoList', JSON.stringify(todoList));
+            });
+
+            // load todoList from localStorage
+            var storedTodoList = localStorage.getItem('todoList');
+            if (storedTodoList) {
+                todoList = JSON.parse(storedTodoList);
+                updateList();
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -28,6 +28,14 @@
                 "scooter",
                 "onepager"
             ]
+        },
+        {
+            "name": "todo_1",
+            "folder": "todos",
+            "tags": [
+                "todo",
+                "onepager"
+            ]
         }
     ],
     "components": [
