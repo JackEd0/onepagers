@@ -1,10 +1,12 @@
-# onepagers
+# onepagers - Deprecated
 
 <https://github.com/JackEd0/onepagers>
 
-<https://op.webrepo.co>
+Demo: <https://op.webrepo.co>
 
 This repository contains lots of onepagers websites.
+
+![cover](cover.jpeg)
 
 ## Developpers
 
