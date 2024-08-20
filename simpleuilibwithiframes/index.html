@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beautiful Blue Button</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 100px;
+            box-sizing: border-box;
+        }
+
+        section {
+            flex-grow: 1;
+        }
+
+        iframe {
+            /* border: 1px solid #ddd; */
+            width: 300px;
+            height: 200px;
+        }
+
+        section.frames.w200 iframe {
+            width: 200px;
+        }
+        section.frames.w300 iframe {
+            width: 300px;
+        }
+        section.frames.h100 iframe {
+            height: 100px;
+        }
+        section.frames.h200 iframe {
+            height: 200px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <section class="frames w200 h100">
+        <iframe width="50" height="50" frameborder="0" src="components/buttons/blue.html"></iframe>
+        <iframe width="50" height="50" frameborder="0" src="components/buttons/glassy.html"></iframe>
+    </section>
+    <section class="frames w200 h200">
+        <iframe width="50" height="50" frameborder="0" src="components/buttons/star.html"></iframe>
+        <iframe width="50" height="50" frameborder="0" src="components/buttons/car.html"></iframe>
+    </section>
+    <section class="frames w300 h100">
+        <iframe width="50" height="50" frameborder="0" src="components/inputs-text/blue.html"></iframe>
+        <iframe width="50" height="50" frameborder="0" src="components/inputs-text/blue.html"></iframe>
+    </section>
+</body>
+
+</html>

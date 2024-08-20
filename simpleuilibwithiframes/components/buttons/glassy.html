@@ -1,0 +1,29 @@
+<button class="glassy-purple-button">Click Me</button>
+<style>
+    .glassy-purple-button {
+        background: linear-gradient(145deg, #a4508b, #5f0a87);
+        border: none;
+        border-radius: 5px;
+        color: white;
+        padding: 15px 30px;
+        font-size: 16px;
+        cursor: pointer;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+        backdrop-filter: blur(10px);
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .glassy-purple-button:hover {
+        background: linear-gradient(145deg, #81458b, #451b63);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        transform: translateY(-3px);
+    }
+
+    .glassy-purple-button:active {
+        background: linear-gradient(145deg, #5f0a87, #a4508b);
+        transform: translateY(1px);
+    }
+</style>

@@ -12,6 +12,8 @@ This repository contains lots of onepagers websites.
 
 You can see the sites in its best form by using a server. A great example is the extension `Live Server` on Visual Studio Code.
 
+There is a second site that is a bit more simple and uses iframes, it can be found in `simpleuilibwithiframes` folder.
+
 ### Ideas
 
 - Generate a portfolio.

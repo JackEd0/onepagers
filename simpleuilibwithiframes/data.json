@@ -1,0 +1,27 @@
+{
+    "name": "Chiba Taki",
+    "physical_appearance": "young, male, dark hair, ...",
+    "jutsu_known": [
+        "Shadow Clone",
+        {
+            "name": "Earth Spike",
+            "notes": "Learn from first enemy in chap. 1"
+        }
+    ],
+    "main_relations": [
+        {
+            "name": "Hiro",
+            "notes": "teammate"
+        },
+        {
+            "name": "Yuki",
+            "notes": "teammate"
+        }
+    ],
+    "secondary_relations": [
+        {
+            "name": "test",
+            "notes": "one enemy, appeared in Chap. xx"
+        }
+    ]
+}
