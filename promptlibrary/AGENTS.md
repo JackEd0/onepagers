@@ -16,6 +16,7 @@ AI agents rely on this file (AGENTS.md) to understand the project and continue w
 ## Rules
 
 1. Keep all documents and comments inside the project concise and actionable.
+2. Use context7 MCP for accurate documentation.
 
 ## Restricted files
 

@@ -1,15 +1,16 @@
 import { Client } from '@notionhq/client'
 
 const notion = new Client({
-  auth: import.meta.env.VITE_NOTION_API_KEY
+  auth: import.meta.env.VITE_NOTION_API_KEY,
+  fetch: fetch.bind(window)
 })
 
 const DATABASE_ID = import.meta.env.VITE_NOTION_DATABASE_ID
 
 export const fetchPrompts = async () => {
   try {
-    const response = await notion.databases.query({
-      database_id: DATABASE_ID,
+    const response = await notion.dataSources.query({
+      data_source_id: DATABASE_ID,
       sorts: [
         {
           property: 'Created',
