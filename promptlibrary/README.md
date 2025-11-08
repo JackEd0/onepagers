@@ -7,6 +7,10 @@ PROJECT CANCELLED because the complexity is too high with the Notion API. It is 
 > Due to security concerns of exposing API tokens in the browser, Notion public API requests aren't able to be made from a web browser. You'll have to make the requests server side and then send the results to the browser
 
 *Issues · makenotion/notion-sdk-js* <https://github.com/makenotion/notion-sdk-js/issues?q=is%3Aissue%20state%3Aclosed%20CORS>
+*@notionhq/client - npm* <https://www.npmjs.com/package/@notionhq/client>
+*Marketplace Profile | Notion* <https://www.notion.so/profile/integrations/internal/86c028d4-8893-4ac4-98cd-e77e20e205a1>
+*Build your first integration* <https://developers.notion.com/docs/create-a-notion-integration>
+*simple-prompts* <http://localhost:5173/>
 
 ## Overview
 
