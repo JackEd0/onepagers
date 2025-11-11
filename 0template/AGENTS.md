@@ -2,6 +2,14 @@
 
 AI agents rely on this file (AGENTS.md) to understand the project and continue work effectively.
 
+If you have read this file, always state "I have reviewed the AGENTS.md file."
+
+## Rules
+
+- Keep all documents and comments inside the project concise and actionable.
+- Always look for guides in the folder `documentation` when working with external libraries.
+- Always use the Context7 MCP tools to resolve library ids and get up-to-date docs before any code generation or configuration.
+
 ## Project Overview
 
 ## Requirements
@@ -13,12 +21,7 @@ AI agents rely on this file (AGENTS.md) to understand the project and continue w
 3. `Tasks.md`: Project tasks with ID numbers, checkboxes [ ] and [x] for completion tracking.
 4. `Troubleshooting.md` (optional): Common issues, solutions, and debugging steps.
 
-## Rules
-
-1. Keep all documents and comments inside the project concise and actionable.
-2. Use context7 MCP for accurate documentation.
-
 ## Restricted files
 
-Files in the list contain sensitive data, they MUST NOT be read
+Files in the list contain sensitive data, they MUST NOT be edited.
 - .env
