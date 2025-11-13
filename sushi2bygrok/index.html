@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sushi Bar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #ffffff;
+        }
+        .primary-color {
+            color: #ff7f7f;
+        }
+        .bg-primary-color {
+            background-color: #ff7f7f;
+        }
+        .hero {
+            background-image: url('https://images.unsplash.com/photo-1611143669185-af224c5e3252?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8c3VzaGl8ZW58MHx8MHx8fDA%3D');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+        .hero-overlay {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 3rem;
+            border-radius: 10px;
+        }
+        .section {
+            padding: 5rem 0;
+        }
+        .card {
+            height: 100%;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .testimonial-img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 1rem 0;
+        }
+        /* Add white space */
+        .container {
+            max-width: 1200px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="sticky-top bg-white shadow">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand primary-color fw-bold" href="#">Sushi Bar</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#menu">Menu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#testimonials">Testimonials</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section id="home" class="hero">
+        <div class="hero-overlay">
+            <h1 class="display-3 fw-bold">Discover Authentic Sushi</h1>
+            <p class="lead">Fresh ingredients, masterful preparation, unforgettable taste.</p>
+            <a href="#menu" class="btn bg-primary-color text-white btn-lg">Explore Our Menu</a>
+        </div>
+    </section>
+
+    <!-- Restaurant Menu -->
+    <section id="menu" class="section bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5 primary-color fw-bold">Our Signature Sushi</h2>
+            <div class="row g-4">
+                <div class="col-sm-6 col-md-4">
+                    <div class="card">
+                        <img src="https://byfood.b-cdn.net/api/public/assets/9595/content?optimizer=image" class="card-img-top" alt="California Roll">
+                        <div class="card-body">
+                            <h5 class="card-title">California Roll</h5>
+                            <p class="card-text">Avocado, crab meat, and cucumber wrapped in seaweed and rice.</p>
+                            <p class="fw-bold">$8.99</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="card">
+                        <img src="https://images.squarespace-cdn.com/content/v1/664b6b511a06037e11a39b1f/845b8295-e0de-4aa7-be39-0b34fb65e8d4/%E6%88%AA%E5%B1%8F2025-03-21%E4%B8%8B%E5%8D%883.49.26.png" class="card-img-top" alt="Spicy Tuna Roll">
+                        <div class="card-body">
+                            <h5 class="card-title">Spicy Tuna Roll</h5>
+                            <p class="card-text">Fresh tuna mixed with spicy mayo, cucumber, and sesame seeds.</p>
+                            <p class="fw-bold">$9.99</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="card">
+                        <img src="https://s.yimg.com/ny/api/res/1.2/GYD4c6dWh_L0Fa4d6it7eQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyNDI7aD02OTc7Y2Y9d2VicA--/https://media.zenfs.com/en/foodie_784/f34d1231cce48a7fe39c9b5a58dbb727" class="card-img-top" alt="Salmon Nigiri">
+                        <div class="card-body">
+                            <h5 class="card-title">Salmon Nigiri</h5>
+                            <p class="card-text">Sliced fresh salmon atop seasoned sushi rice.</p>
+                            <p class="fw-bold">$5.99</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="card">
+                        <img src="https://img1.wsimg.com/isteam/ip/20558172-f0bb-48c0-89f1-a8a8d73f9516/DSCF6874.JPG/:/rs=w:1280" class="card-img-top" alt="Eel Roll">
+                        <div class="card-body">
+                            <h5 class="card-title">Eel Roll</h5>
+                            <p class="card-text">Grilled eel with cucumber and sweet eel sauce.</p>
+                            <p class="fw-bold">$10.99</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="card">
+                        <img src="https://namisushi.co/wp-content/uploads/2023/07/DSC05966-scaled.jpeg" class="card-img-top" alt="Shrimp Tempura Roll">
+                        <div class="card-body">
+                            <h5 class="card-title">Shrimp Tempura Roll</h5>
+                            <p class="card-text">Crispy tempura shrimp, avocado, and mayo.</p>
+                            <p class="fw-bold">$11.99</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="card">
+                        <img src="https://i.ytimg.com/vi/fTYPhXYotaw/maxresdefault.jpg" class="card-img-top" alt="Dragon Roll">
+                        <div class="card-body">
+                            <h5 class="card-title">Dragon Roll</h5>
+                            <p class="card-text">Eel and cucumber inside, topped with avocado.</p>
+                            <p class="fw-bold">$12.99</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="card">
+                        <img src="https://static01.nyt.com/images/2025/10/05/magazine/05mag-Eat/05mag-Eat-videoSixteenByNineJumbo1600-v2.jpg" class="card-img-top" alt="Rainbow Roll">
+                        <div class="card-body">
+                            <h5 class="card-title">Rainbow Roll</h5>
+                            <p class="card-text">California roll topped with assorted fresh fish.</p>
+                            <p class="fw-bold">$13.99</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="card">
+                        <img src="https://purpleavocado.de/wp-content/uploads/2016/02/sushi-abend_MG_0292.jpg" class="card-img-top" alt="Vegetarian Roll">
+                        <div class="card-body">
+                            <h5 class="card-title">Vegetarian Roll</h5>
+                            <p class="card-text">Assorted vegetables wrapped in rice and seaweed.</p>
+                            <p class="fw-bold">$7.99</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="card">
+                        <img src="https://namisushi.co/wp-content/uploads/2023/07/DSC03886-2-scaled.jpg" class="card-img-top" alt="Sashimi Platter">
+                        <div class="card-body">
+                            <h5 class="card-title">Sashimi Platter</h5>
+                            <p class="card-text">Selection of fresh raw fish slices.</p>
+                            <p class="fw-bold">$15.99</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="section">
+        <div class="container">
+            <h2 class="text-center mb-5 primary-color fw-bold">Customer Testimonials</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card text-center">
+                        <img src="https://media.istockphoto.com/id/1961053928/photo/testimonial-portrait-of-a-handsome-mature-man.jpg?s=612x612&w=0&k=20&c=MJq7K4S8Hihi7p4f4-Ja4_II9X8HRsBGusOcJ7uJLbc=" class="rounded-circle mx-auto mt-3 testimonial-img" alt="Customer 1">
+                        <div class="card-body">
+                            <p class="card-text">"The freshest sushi I've ever had! Absolutely delicious."</p>
+                            <p class="fw-bold">John Doe</p>
+                            <div class="text-warning">★★★★★</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card text-center">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" class="rounded-circle mx-auto mt-3 testimonial-img" alt="Customer 2">
+                        <div class="card-body">
+                            <p class="card-text">"Great atmosphere and even better food. Highly recommend!"</p>
+                            <p class="fw-bold">Jane Smith</p>
+                            <div class="text-warning">★★★★★</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card text-center">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" class="rounded-circle mx-auto mt-3 testimonial-img" alt="Customer 3">
+                        <div class="card-body">
+                            <p class="card-text">"Perfect for a quick lunch or a special dinner."</p>
+                            <p class="fw-bold">Mike Johnson</p>
+                            <div class="text-warning">★★★★☆</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5 primary-color fw-bold">Get in Touch</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <h5>Contact Information</h5>
+                    <p><strong>Address:</strong> 123 Sushi Street, Food City, FC 12345</p>
+                    <p><strong>Phone:</strong> (123) 456-7890</p>
+                    <p><strong>Email:</strong> info@sushibar.com</p>
+                    <p><strong>Social Media:</strong></p>
+                    <a href="#" class="me-2">Facebook</a>
+                    <a href="#" class="me-2">Instagram</a>
+                    <a href="#">Twitter</a>
+                </div>
+                <div class="col-md-6">
+                    <h5>Opening Hours</h5>
+                    <p><strong>Monday - Friday:</strong> 11:00 AM - 10:00 PM</p>
+                    <p><strong>Saturday - Sunday:</strong> 12:00 PM - 11:00 PM</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center py-3">
+        <p>&copy; 2025 Sushi Bar. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
