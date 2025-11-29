@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Supabase Demo App</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; background: #f4f4f4; }
+    h1, h2 { color: #1a1a1a; }
+    input, button { padding: 10px; margin: 5px; font-size: 16px; }
+    button { background: #00a86b; color: white; border: none; border-radius: 4px; cursor: pointer; }
+    button:hover { background: #008c5a; }
+    ul { list-style: none; padding: 0; }
+    li { background: white; padding: 15px; margin: 10px 0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    .container { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Supabase Demo – Todo List</h1>
+    <p>A minimal full-stack app using only HTML + Supabase</p>
+
+    <h2>Add a Todo</h2>
+    <input type="text" id="todoInput" placeholder="Enter a new todo..." />
+    <button onclick="addTodo()">Add Todo</button>
+
+    <h2>Todos</h2>
+    <ul id="todoList"></ul>
+  </div>
+
+  <script>
+    // === REPLACE THESE WITH YOUR OWN SUPABASE KEYS ===
+    const SUPABASE_URL = 'https://qqcdjkshozsinusvkfpx.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFxY2Rqa3Nob3pzaW51c3ZrZnB4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ0NTY4ODYsImV4cCI6MjA4MDAzMjg4Nn0.63v8plDJPub2lDrRN46yJhbXImL6nvIyfIlkYIsKpbw';
+
+    const supabase = Supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    // Fetch and display todos
+    async function loadTodos() {
+      const { data: todos, error } = await supabase
+        .from('todos')
+        .select('*')
+        .order('id', { ascending: false });
+
+      if (error) {
+        console.error('Error loading todos:', error);
+        return;
+      }
+
+      const list = document.getElementById('todoList');
+      list.innerHTML = '';
+      todos.forEach(todo => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+          <strong>${todo.task}</strong>
+          ${todo.is_complete ? '✅' : '⏳'}
+          <button onclick="toggleComplete(${todo.id}, ${todo.is_complete})" style="margin-left: 15px;">
+            ${todo.is_complete ? 'Undo' : 'Complete'}
+          </button>
+          <button onclick="deleteTodo(${todo.id})" style="background:#e74c3c;">Delete</button>
+        `;
+        list.appendChild(li);
+      });
+    }
+
+    // Add new todo
+    async function addTodo() {
+      const task = document.getElementById('todoInput').value.trim();
+      if (!task) return alert('Please enter a task');
+
+      const { error } = await supabase
+        .from('todos')
+        .insert({ task: task, is_complete: false });
+
+      if (error) {
+        alert('Error adding todo: ' + error.message);
+      } else {
+        document.getElementById('todoInput').value = '';
+        loadTodos();
+      }
+    }
+
+    // Toggle complete status
+    async function toggleComplete(id, currentStatus) {
+      const { error } = await supabase
+        .from('todos')
+        .update({ is_complete: !currentStatus })
+        .eq('id', id);
+
+      if (!error) loadTodos();
+    }
+
+    // Delete todo
+    async function deleteTodo(id) {
+      if (!confirm('Delete this todo?')) return;
+
+      const { error } = await supabase
+        .from('todos')
+        .delete()
+        .eq('id', id);
+
+      if (!error) loadTodos();
+    }
+
+    // Load todos on page load
+    window.onload = loadTodos;
+  </script>
+
+  <hr style="margin-top:60px;"/>
+  <h2>How to Set Up Supabase (Step-by-Step)</h2>
+  <ol>
+    <li><strong>Create a free Supabase account</strong><br>
+        Go to <a href="https://supabase.com" target="_blank">https://supabase.com</a> → Sign up (GitHub login is fastest).</li>
+    <li><strong>Create a new project</strong><br>
+        Click “New Project” → choose a name → wait ~2 minutes for it to provision.</li>
+    <li><strong>Get your keys</strong><br>
+        In your project dashboard → Settings → API → copy:
+        <ul>
+          <li><code>URL</code> (e.g. https://abcde.supabase.co)</li>
+          <li><code>anon public</code> key</li>
+        </ul>
+    </li>
+    <li><strong>Create the <code>todos</code> table</strong><br>
+        Go to Table Editor → “Create a new table”<br>
+        Table name: <code>todos</code><br>
+        Columns:
+        <table border="1" cellpadding="8" cellspacing="0" style="margin:10px 0;">
+          <tr><th>Name</th><th>Type</th><th>Default</th><th>Options</th></tr>
+          <tr><td>id</td><td>bigint</td><td>generated identity</td><td>Primary key</td></tr>
+          <tr><td>task</td><td>text</td><td></td><td></td></tr>
+          <tr><td>is_complete</td><td>boolean</td><td>false</td><td></td></tr>
+          <tr><td>created_at</td><td>timestamptz</td><td>now()</td><td></td></tr>
+        </table>
+    </li>
+    <li><strong>Enable Row Level Security (optional but recommended)</strong><br>
+        If you want public read/write (good for demos), go to Authentication → Policies → disable RLS on the <code>todos</code> table or create open policies:
+        <pre>create policy "public access" on todos for all using (true) with check (true);</pre>
+    </li>
+    <li><strong>Paste your keys into the HTML file</strong><br>
+        Replace <code>YOUR-PROJECT</code> and <code>your-anon-public-key-here</code> in the script section above.</li>
+    <li><strong>Open the HTML file in a browser</strong><br>
+        It works instantly — no server needed!</li>
+  </ol>
+
+  <p style="margin-top:40px; font-size:0.9em; color:#555;">
+    Made with ❤️ for quick Supabase demos. Feel free to fork and extend!
+  </p>
+</body>
+</html>
