@@ -10,8 +10,9 @@ const settingsStore = useSettingsStore()
   <header class="app-header">
     <div class="header-left">
       <button
-        class="btn btn-link header-menu-btn d-lg-none"
+        class="btn btn-link header-menu-btn"
         @click="emit('toggle-sidebar')"
+        title="Toggle Sidebar"
       >
         <i class="bi bi-list fs-4"></i>
       </button>
@@ -69,9 +70,4 @@ const settingsStore = useSettingsStore()
   color: var(--bs-body-color);
 }
 
-@media (min-width: 992px) {
-  .app-header {
-    margin-left: 280px;
-  }
-}
 </style>

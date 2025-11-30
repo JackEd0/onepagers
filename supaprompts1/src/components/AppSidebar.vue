@@ -56,7 +56,7 @@ async function handleSaveCollection(data) {
         <i class="bi bi-lightning-charge-fill text-primary me-2"></i>
         <span class="brand-text">SupaPrompts</span>
       </router-link>
-      <button class="btn btn-link sidebar-toggle d-lg-none" @click="emit('toggle')">
+      <button class="btn btn-link sidebar-toggle" @click="emit('toggle')" title="Close Sidebar">
         <i class="bi bi-x-lg"></i>
       </button>
     </div>
@@ -118,7 +118,7 @@ async function handleSaveCollection(data) {
     />
   </aside>
 
-  <!-- Overlay for mobile -->
+  <!-- Overlay when sidebar is open (mobile only) -->
   <div
     v-if="open"
     class="sidebar-overlay d-lg-none"
@@ -237,19 +237,12 @@ async function handleSaveCollection(data) {
   z-index: 1035;
 }
 
-@media (max-width: 991.98px) {
-  .sidebar {
-    transform: translateX(-100%);
-  }
-
-  .sidebar.sidebar-open {
-    transform: translateX(0);
-  }
+/* Sidebar is hidden by default, shown when open */
+.sidebar {
+  transform: translateX(-100%);
 }
 
-@media (min-width: 992px) {
-  .sidebar + .main-content {
-    margin-left: 280px;
-  }
+.sidebar.sidebar-open {
+  transform: translateX(0);
 }
 </style>

@@ -89,4 +89,11 @@ function toggleSidebar() {
     padding: 1rem;
   }
 }
+
+/* When sidebar is open on larger screens, add margin */
+@media (min-width: 992px) {
+  .app-container:not(.sidebar-collapsed) .main-content {
+    margin-left: 280px;
+  }
+}
 </style>
