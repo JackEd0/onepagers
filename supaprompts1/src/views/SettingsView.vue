@@ -10,6 +10,7 @@ const url = ref(settingsStore.supabaseUrl)
 const anonKey = ref(settingsStore.supabaseAnonKey)
 const testing = ref(false)
 const saved = ref(false)
+const sqlCode = ref(null)
 
 async function handleSave() {
   testing.value = true
@@ -43,6 +44,15 @@ function handleClear() {
   window.dispatchEvent(new CustomEvent('show-toast', {
     detail: { message: 'Credentials cleared', type: 'info' }
   }))
+}
+
+function copySchemaSQL() {
+  if (sqlCode.value) {
+    navigator.clipboard.writeText(sqlCode.value.textContent || '')
+    window.dispatchEvent(new CustomEvent('show-toast', {
+      detail: { message: 'SQL copied to clipboard!', type: 'success' }
+    }))
+  }
 }
 
 onMounted(() => {
@@ -172,7 +182,10 @@ onMounted(() => {
               </p>
             </div>
             <div class="card-body">
-              <pre class="bg-dark text-light p-3 rounded-3 small overflow-auto"><code>-- Collections
+              <pre ref="sqlCode" class="bg-dark text-light p-3 rounded-3 small overflow-auto" style="max-height: 400px;"><code>-- Enable UUID extension
+create extension if not exists "uuid-ossp";
+
+-- Collections table
 create table collections (
   id uuid primary key default uuid_generate_v4(),
   name text not null,
@@ -180,7 +193,7 @@ create table collections (
   created_at timestamptz default now()
 );
 
--- Prompts
+-- Prompts table
 create table prompts (
   id uuid primary key default uuid_generate_v4(),
   collection_id uuid references collections(id) on delete set null,
@@ -195,10 +208,34 @@ create table prompts (
   last_copied_at timestamptz,
   created_at timestamptz default now(),
   updated_at timestamptz default now()
-);</code></pre>
+);
+
+-- Enable RLS and add policies (REQUIRED for data to show)
+alter table collections enable row level security;
+alter table prompts enable row level security;
+
+-- Collections policies
+create policy "Allow public read access on collections"
+  on collections for select using (true);
+create policy "Allow public insert on collections"
+  on collections for insert with check (true);
+create policy "Allow public update on collections"
+  on collections for update using (true);
+create policy "Allow public delete on collections"
+  on collections for delete using (true);
+
+-- Prompts policies
+create policy "Allow public read access on prompts"
+  on prompts for select using (true);
+create policy "Allow public insert on prompts"
+  on prompts for insert with check (true);
+create policy "Allow public update on prompts"
+  on prompts for update using (true);
+create policy "Allow public delete on prompts"
+  on prompts for delete using (true);</code></pre>
               <button
                 class="btn btn-outline-secondary btn-sm mt-2"
-                @click="navigator.clipboard.writeText($refs.sqlCode?.textContent || '')"
+                @click="copySchemaSQL"
               >
                 <i class="bi bi-clipboard me-2"></i>
                 Copy SQL
