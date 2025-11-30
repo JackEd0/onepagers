@@ -2,85 +2,85 @@
 
 ## Project Setup
 
-- [ ] Initialize Vue 3 project with Vite
-- [ ] Install and configure dependencies (Vue Router, Pinia, Supabase-js)
-- [ ] Set up Bootstrap 5 + Bootstrap Icons
-- [ ] Configure PWA plugin
-- [ ] Set up project folder structure
+- [x] Initialize Vue 3 project with Vite
+- [x] Install and configure dependencies (Vue Router, Pinia, Supabase-js)
+- [x] Set up Bootstrap 5 + Bootstrap Icons
+- [x] Configure PWA plugin
+- [x] Set up project folder structure
 
 ## Supabase Integration
 
-- [ ] Create Supabase client wrapper
-- [ ] Implement connection settings (URL + anon key)
-- [ ] Store settings in localStorage
-- [ ] Add connection status indicator
+- [x] Create Supabase client wrapper
+- [x] Implement connection settings (URL + anon key)
+- [x] Store settings in localStorage
+- [x] Add connection status indicator
 
 ## Collections Feature
 
-- [ ] Create collections Pinia store
-- [ ] Implement collections CRUD operations
-- [ ] Build sidebar with collections list
-- [ ] Add drag & drop reordering
-- [ ] Create collection form modal (add/edit)
-- [ ] Add delete confirmation dialog
+- [x] Create collections Pinia store
+- [x] Implement collections CRUD operations
+- [x] Build sidebar with collections list
+- [x] Add drag & drop reordering
+- [x] Create collection form modal (add/edit)
+- [x] Add delete confirmation dialog
 
 ## Prompts Feature
 
-- [ ] Create prompts Pinia store
-- [ ] Implement prompts CRUD operations
-- [ ] Build prompt card component
-- [ ] Create prompt form modal (add/edit)
-- [ ] Add delete confirmation dialog
-- [ ] Implement favorite toggle
-- [ ] Add copy button with counter
-- [ ] Track last_copied_at timestamp
+- [x] Create prompts Pinia store
+- [x] Implement prompts CRUD operations
+- [x] Build prompt card component
+- [x] Create prompt form modal (add/edit)
+- [x] Add delete confirmation dialog
+- [x] Implement favorite toggle
+- [x] Add copy button with counter
+- [x] Track last_copied_at timestamp
 
 ## Search & Filtering
 
-- [ ] Build centered search bar component
-- [ ] Implement keyboard shortcut (Ctrl+K / Ctrl+P)
-- [ ] Add full-text search across title, template, tags, description
-- [ ] Create tag filter (multi-select)
-- [ ] Add favorites-only filter
-- [ ] Add collection filter
-- [ ] Implement sort options (created, copied, most copied, title)
+- [x] Build centered search bar component
+- [x] Implement keyboard shortcut (Ctrl+K / Ctrl+P)
+- [x] Add full-text search across title, template, tags, description
+- [x] Create tag filter (multi-select)
+- [x] Add favorites-only filter
+- [x] Add collection filter
+- [x] Implement sort options (created, copied, most copied, title)
 
 ## Quick Use Feature
 
-- [ ] Parse `{{variable}}` placeholders from template
-- [ ] Build Quick Use modal with variable input fields
-- [ ] Implement variable replacement
-- [ ] Add copy final prompt button
+- [x] Parse `{{variable}}` placeholders from template
+- [x] Build Quick Use modal with variable input fields
+- [x] Implement variable replacement
+- [x] Add copy final prompt button
 
 ## Sharing Feature
 
-- [ ] Generate shareable public link for prompts
-- [ ] Build public prompt view page
-- [ ] Add "Add to my SupaPrompts" button
-- [ ] Implement import from shared link
+- [x] Generate shareable public link for prompts
+- [x] Build public prompt view page
+- [ ] Add "Add to my SupaPrompts" button (requires auth)
+- [ ] Implement import from shared link (requires auth)
 
 ## Settings Page
 
-- [ ] Create settings view
-- [ ] Build Supabase credentials form
-- [ ] Add save/clear settings functionality
-- [ ] Display connection status
+- [x] Create settings view
+- [x] Build Supabase credentials form
+- [x] Add save/clear settings functionality
+- [x] Display connection status
 
 ## UI/UX
 
-- [ ] Design Apple-inspired aesthetic (blurred backgrounds, large typography, whitespace, rounded corners)
-- [ ] Implement responsive layout (mobile-first)
-- [ ] Add dark mode toggle
-- [ ] Create smooth transitions and animations
+- [x] Design Apple-inspired aesthetic (blurred backgrounds, large typography, whitespace, rounded corners)
+- [x] Implement responsive layout (mobile-first)
+- [x] Add dark mode toggle
+- [x] Create smooth transitions and animations
 - [ ] Build loading states and skeletons
-- [ ] Add empty states for lists
-- [ ] Implement toast notifications
+- [x] Add empty states for lists
+- [x] Implement toast notifications
 
 ## PWA
 
-- [ ] Configure manifest.json
+- [x] Configure manifest.json
 - [ ] Add app icons (all sizes)
-- [ ] Set up service worker
+- [x] Set up service worker
 - [ ] Test offline functionality
 - [ ] Verify install prompt
 
