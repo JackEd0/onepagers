@@ -87,7 +87,7 @@ function cancelDelete() {
 // Copy prompt
 async function handleCopy(prompt) {
   const variables = promptsStore.parseVariables(prompt.template)
-  
+
   if (variables.length > 0) {
     openQuickUse(prompt)
   } else {
@@ -102,12 +102,12 @@ async function copyToClipboard(text, promptId = null) {
       await promptsStore.incrementCopyCount(promptId)
     }
     // Show success toast (handled by ToastContainer)
-    window.dispatchEvent(new CustomEvent('show-toast', { 
+    window.dispatchEvent(new CustomEvent('show-toast', {
       detail: { message: 'Copied to clipboard!', type: 'success' }
     }))
   } catch (err) {
     console.error('Failed to copy:', err)
-    window.dispatchEvent(new CustomEvent('show-toast', { 
+    window.dispatchEvent(new CustomEvent('show-toast', {
       detail: { message: 'Failed to copy', type: 'error' }
     }))
   }
@@ -120,7 +120,7 @@ function handleKeydown(e) {
     e.preventDefault()
     document.querySelector('.search-input')?.focus()
   }
-  
+
   // Ctrl+N for new prompt
   if ((e.ctrlKey || e.metaKey) && e.key === 'n') {
     e.preventDefault()
@@ -156,7 +156,7 @@ onUnmounted(() => {
     <!-- Connected state -->
     <template v-else>
       <!-- Search Bar -->
-      <SearchBar 
+      <SearchBar
         class="mb-4"
         @new-prompt="openNewPromptModal"
       />

@@ -5,8 +5,8 @@ import { usePromptsStore } from '@/stores/prompts'
 const promptsStore = usePromptsStore()
 
 const hasActiveFilters = computed(() => {
-  return promptsStore.selectedTags.length > 0 || 
-         promptsStore.showFavoritesOnly || 
+  return promptsStore.selectedTags.length > 0 ||
+         promptsStore.showFavoritesOnly ||
          promptsStore.sortBy !== 'created_at'
 })
 </script>
@@ -16,10 +16,10 @@ const hasActiveFilters = computed(() => {
     <div class="filter-group">
       <!-- Tags Filter -->
       <div class="dropdown">
-        <button 
+        <button
           class="btn btn-outline-secondary dropdown-toggle"
           :class="{ 'btn-primary': promptsStore.selectedTags.length > 0 }"
-          type="button" 
+          type="button"
           data-bs-toggle="dropdown"
         >
           <i class="bi bi-tags me-2"></i>
@@ -33,12 +33,12 @@ const hasActiveFilters = computed(() => {
             <span class="dropdown-item-text text-muted">No tags yet</span>
           </li>
           <li v-for="tag in promptsStore.allTags" :key="tag">
-            <button 
+            <button
               class="dropdown-item d-flex align-items-center"
               @click.stop="promptsStore.toggleTag(tag)"
             >
-              <i 
-                class="bi me-2" 
+              <i
+                class="bi me-2"
                 :class="promptsStore.selectedTags.includes(tag) ? 'bi-check-square-fill text-primary' : 'bi-square'"
               ></i>
               {{ tag }}
@@ -48,7 +48,7 @@ const hasActiveFilters = computed(() => {
             <hr class="dropdown-divider">
           </li>
           <li v-if="promptsStore.selectedTags.length > 0">
-            <button 
+            <button
               class="dropdown-item text-danger"
               @click="promptsStore.setSelectedTags([])"
             >
@@ -60,7 +60,7 @@ const hasActiveFilters = computed(() => {
       </div>
 
       <!-- Favorites Filter -->
-      <button 
+      <button
         class="btn"
         :class="promptsStore.showFavoritesOnly ? 'btn-warning' : 'btn-outline-secondary'"
         @click="promptsStore.setShowFavoritesOnly(!promptsStore.showFavoritesOnly)"
@@ -71,9 +71,9 @@ const hasActiveFilters = computed(() => {
 
       <!-- Sort Dropdown -->
       <div class="dropdown">
-        <button 
+        <button
           class="btn btn-outline-secondary dropdown-toggle"
-          type="button" 
+          type="button"
           data-bs-toggle="dropdown"
         >
           <i class="bi bi-sort-down me-2"></i>
@@ -81,7 +81,7 @@ const hasActiveFilters = computed(() => {
         </button>
         <ul class="dropdown-menu dropdown-menu-end">
           <li>
-            <button 
+            <button
               class="dropdown-item"
               :class="{ active: promptsStore.sortBy === 'created_at' }"
               @click="promptsStore.setSortBy('created_at')"
@@ -91,7 +91,7 @@ const hasActiveFilters = computed(() => {
             </button>
           </li>
           <li>
-            <button 
+            <button
               class="dropdown-item"
               :class="{ active: promptsStore.sortBy === 'last_copied_at' }"
               @click="promptsStore.setSortBy('last_copied_at')"
@@ -101,7 +101,7 @@ const hasActiveFilters = computed(() => {
             </button>
           </li>
           <li>
-            <button 
+            <button
               class="dropdown-item"
               :class="{ active: promptsStore.sortBy === 'copied_count' }"
               @click="promptsStore.setSortBy('copied_count')"
@@ -111,7 +111,7 @@ const hasActiveFilters = computed(() => {
             </button>
           </li>
           <li>
-            <button 
+            <button
               class="dropdown-item"
               :class="{ active: promptsStore.sortBy === 'title' }"
               @click="promptsStore.setSortBy('title')"
@@ -125,7 +125,7 @@ const hasActiveFilters = computed(() => {
     </div>
 
     <!-- Clear All Filters -->
-    <button 
+    <button
       v-if="hasActiveFilters"
       class="btn btn-link text-danger"
       @click="promptsStore.clearFilters"

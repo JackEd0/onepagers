@@ -82,9 +82,9 @@ function handleSubmit() {
 <template>
   <Teleport to="body">
     <div v-if="show" class="modal-backdrop fade show"></div>
-    <div 
-      v-if="show" 
-      class="modal fade show d-block" 
+    <div
+      v-if="show"
+      class="modal fade show d-block"
       tabindex="-1"
       @click.self="emit('close')"
     >
@@ -95,9 +95,9 @@ function handleSubmit() {
               <i class="bi me-2" :class="isEditing ? 'bi-pencil' : 'bi-plus-lg'"></i>
               {{ isEditing ? 'Edit Prompt' : 'New Prompt' }}
             </h5>
-            <button 
-              type="button" 
-              class="btn-close" 
+            <button
+              type="button"
+              class="btn-close"
               @click="emit('close')"
             ></button>
           </div>
@@ -106,7 +106,7 @@ function handleSubmit() {
               <!-- Title -->
               <div class="mb-3">
                 <label class="form-label fw-medium">Title *</label>
-                <input 
+                <input
                   v-model="title"
                   type="text"
                   class="form-control form-control-lg"
@@ -123,7 +123,7 @@ function handleSubmit() {
                     Use <code>{{variable}}</code> for placeholders
                   </span>
                 </label>
-                <textarea 
+                <textarea
                   v-model="template"
                   class="form-control"
                   rows="8"
@@ -135,7 +135,7 @@ function handleSubmit() {
               <!-- Description -->
               <div class="mb-3">
                 <label class="form-label fw-medium">Description</label>
-                <input 
+                <input
                   v-model="description"
                   type="text"
                   class="form-control"
@@ -148,7 +148,7 @@ function handleSubmit() {
                 <label class="form-label fw-medium">Collection</label>
                 <select v-model="collectionId" class="form-select">
                   <option :value="null">No Collection</option>
-                  <option 
+                  <option
                     v-for="collection in collectionsStore.sortedCollections"
                     :key="collection.id"
                     :value="collection.id"
@@ -163,13 +163,13 @@ function handleSubmit() {
                 <label class="form-label fw-medium">Tags</label>
                 <div class="tags-input-wrapper">
                   <div class="tags-display mb-2" v-if="tags.length">
-                    <span 
-                      v-for="tag in tags" 
+                    <span
+                      v-for="tag in tags"
                       :key="tag"
                       class="badge bg-primary me-1 mb-1"
                     >
                       {{ tag }}
-                      <button 
+                      <button
                         type="button"
                         class="btn-close btn-close-white ms-1"
                         style="font-size: 0.5rem;"
@@ -177,7 +177,7 @@ function handleSubmit() {
                       ></button>
                     </span>
                   </div>
-                  <input 
+                  <input
                     v-model="tagsInput"
                     type="text"
                     class="form-control"
@@ -191,7 +191,7 @@ function handleSubmit() {
               <!-- Favorite -->
               <div class="mb-3">
                 <div class="form-check">
-                  <input 
+                  <input
                     v-model="isFavorite"
                     type="checkbox"
                     class="form-check-input"
@@ -205,15 +205,15 @@ function handleSubmit() {
               </div>
             </div>
             <div class="modal-footer border-0 pt-0">
-              <button 
-                type="button" 
+              <button
+                type="button"
                 class="btn btn-outline-secondary btn-lg"
                 @click="emit('close')"
               >
                 Cancel
               </button>
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 class="btn btn-primary btn-lg"
                 :disabled="!title.trim() || !template.trim()"
               >

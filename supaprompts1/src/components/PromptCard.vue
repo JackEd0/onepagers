@@ -47,7 +47,7 @@ function handleCopyClick() {
             {{ prompt.description }}
           </p>
         </div>
-        <button 
+        <button
           class="btn btn-link favorite-btn p-1"
           :class="{ 'text-warning': prompt.is_favorite }"
           @click="emit('toggle-favorite')"
@@ -72,8 +72,8 @@ function handleCopyClick() {
 
       <!-- Tags -->
       <div v-if="prompt.tags?.length" class="tags mb-3">
-        <span 
-          v-for="tag in prompt.tags.slice(0, 4)" 
+        <span
+          v-for="tag in prompt.tags.slice(0, 4)"
           :key="tag"
           class="badge bg-secondary me-1 mb-1"
         >
@@ -99,21 +99,21 @@ function handleCopyClick() {
 
       <!-- Actions -->
       <div class="card-actions d-flex gap-2">
-        <button 
+        <button
           class="btn btn-primary flex-grow-1"
           @click="handleCopyClick"
         >
           <i class="bi me-2" :class="hasVariables ? 'bi-lightning' : 'bi-clipboard'"></i>
           {{ hasVariables ? 'Quick Use' : 'Copy' }}
         </button>
-        <button 
+        <button
           class="btn btn-outline-secondary"
           @click="emit('edit', prompt)"
           title="Edit"
         >
           <i class="bi bi-pencil"></i>
         </button>
-        <button 
+        <button
           class="btn btn-outline-danger"
           @click="emit('delete', prompt)"
           title="Delete"

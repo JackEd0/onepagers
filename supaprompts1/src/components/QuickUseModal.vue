@@ -46,9 +46,9 @@ function handleCopy() {
 <template>
   <Teleport to="body">
     <div v-if="show" class="modal-backdrop fade show"></div>
-    <div 
-      v-if="show" 
-      class="modal fade show d-block" 
+    <div
+      v-if="show"
+      class="modal fade show d-block"
       tabindex="-1"
       @click.self="emit('close')"
     >
@@ -59,9 +59,9 @@ function handleCopy() {
               <i class="bi bi-lightning-charge me-2"></i>
               Quick Use: {{ prompt?.title }}
             </h5>
-            <button 
-              type="button" 
-              class="btn-close" 
+            <button
+              type="button"
+              class="btn-close"
               @click="emit('close')"
             ></button>
           </div>
@@ -73,13 +73,13 @@ function handleCopy() {
                 Fill in the variables
               </h6>
               <div class="row g-3">
-                <div 
-                  v-for="variable in variables" 
+                <div
+                  v-for="variable in variables"
                   :key="variable"
                   class="col-12 col-md-6"
                 >
                   <label class="form-label fw-medium">{{ variable }}</label>
-                  <input 
+                  <input
                     v-model="variableValues[variable]"
                     type="text"
                     class="form-control"
@@ -101,15 +101,15 @@ function handleCopy() {
             </div>
           </div>
           <div class="modal-footer border-0 pt-0">
-            <button 
-              type="button" 
+            <button
+              type="button"
               class="btn btn-outline-secondary btn-lg"
               @click="emit('close')"
             >
               Cancel
             </button>
-            <button 
-              type="button" 
+            <button
+              type="button"
               class="btn btn-primary btn-lg"
               @click="handleCopy"
               :disabled="!allFilled"

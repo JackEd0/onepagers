@@ -9,8 +9,8 @@ const settingsStore = useSettingsStore()
 <template>
   <header class="app-header">
     <div class="header-left">
-      <button 
-        class="btn btn-link header-menu-btn d-lg-none" 
+      <button
+        class="btn btn-link header-menu-btn d-lg-none"
         @click="emit('toggle-sidebar')"
       >
         <i class="bi bi-list fs-4"></i>
@@ -19,7 +19,7 @@ const settingsStore = useSettingsStore()
 
     <div class="header-right">
       <!-- Dark Mode Toggle -->
-      <button 
+      <button
         class="btn btn-link header-btn"
         @click="settingsStore.toggleDarkMode()"
         :title="settingsStore.darkMode ? 'Light Mode' : 'Dark Mode'"

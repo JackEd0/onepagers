@@ -7,9 +7,9 @@ let toastId = 0
 function showToast(event) {
   const { message, type = 'info' } = event.detail
   const id = ++toastId
-  
+
   toasts.value.push({ id, message, type })
-  
+
   // Auto-remove after 3 seconds
   setTimeout(() => {
     removeToast(id)
@@ -59,9 +59,9 @@ onUnmounted(() => {
       <div class="toast-body d-flex align-items-center">
         <i class="bi me-2" :class="getToastIcon(toast.type)"></i>
         <span class="flex-grow-1">{{ toast.message }}</span>
-        <button 
-          type="button" 
-          class="btn-close btn-close-white ms-2" 
+        <button
+          type="button"
+          class="btn-close btn-close-white ms-2"
           @click="removeToast(toast.id)"
         ></button>
       </div>

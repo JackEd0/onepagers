@@ -50,7 +50,7 @@ function handleDragOver(event, index) {
 
 function handleDrop(event, targetIndex) {
   event.preventDefault()
-  
+
   if (draggedIndex.value === null || draggedIndex.value === targetIndex) {
     return
   }
@@ -58,10 +58,10 @@ function handleDrop(event, targetIndex) {
   const collections = [...collectionsStore.sortedCollections]
   const [removed] = collections.splice(draggedIndex.value, 1)
   collections.splice(targetIndex, 0, removed)
-  
+
   const reorderedIds = collections.map(c => c.id)
   collectionsStore.reorderCollections(reorderedIds)
-  
+
   draggedIndex.value = null
 }
 
@@ -72,8 +72,8 @@ function handleDragEnd() {
 
 <template>
   <ul class="collection-list nav flex-column">
-    <li 
-      v-for="(collection, index) in collectionsStore.sortedCollections" 
+    <li
+      v-for="(collection, index) in collectionsStore.sortedCollections"
       :key="collection.id"
       class="nav-item"
       draggable="true"
@@ -82,7 +82,7 @@ function handleDragEnd() {
       @drop="handleDrop($event, index)"
       @dragend="handleDragEnd"
     >
-      <a 
+      <a
         href="#"
         class="nav-link collection-item"
         :class="{ active: collectionsStore.activeCollectionId === collection.id }"
@@ -91,14 +91,14 @@ function handleDragEnd() {
         <i class="bi bi-folder me-2"></i>
         <span class="collection-name">{{ collection.name }}</span>
         <div class="collection-actions">
-          <button 
+          <button
             class="btn btn-link btn-sm p-0"
             @click.stop="emit('edit', collection)"
             title="Edit"
           >
             <i class="bi bi-pencil"></i>
           </button>
-          <button 
+          <button
             class="btn btn-link btn-sm p-0 text-danger"
             @click="confirmDelete(collection, $event)"
             title="Delete"

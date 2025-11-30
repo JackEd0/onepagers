@@ -36,7 +36,7 @@ export const usePromptsStore = defineStore('prompts', () => {
     // Filter by search query
     if (searchQuery.value.trim()) {
       const query = searchQuery.value.toLowerCase()
-      result = result.filter(p => 
+      result = result.filter(p =>
         p.title?.toLowerCase().includes(query) ||
         p.template?.toLowerCase().includes(query) ||
         p.description?.toLowerCase().includes(query) ||
@@ -46,7 +46,7 @@ export const usePromptsStore = defineStore('prompts', () => {
 
     // Filter by selected tags
     if (selectedTags.value.length > 0) {
-      result = result.filter(p => 
+      result = result.filter(p =>
         p.tags && selectedTags.value.every(tag => p.tags.includes(tag))
       )
     }
@@ -78,7 +78,7 @@ export const usePromptsStore = defineStore('prompts', () => {
   async function fetchPrompts() {
     const { getClient } = useSupabase()
     const supabase = getClient()
-    
+
     if (!supabase) {
       error.value = 'Not connected to Supabase'
       return
@@ -106,7 +106,7 @@ export const usePromptsStore = defineStore('prompts', () => {
   async function createPrompt(promptData) {
     const { getClient } = useSupabase()
     const supabase = getClient()
-    
+
     if (!supabase) {
       error.value = 'Not connected to Supabase'
       return null
@@ -132,7 +132,7 @@ export const usePromptsStore = defineStore('prompts', () => {
         .single()
 
       if (createError) throw createError
-      
+
       prompts.value.unshift(data)
       return data
     } catch (err) {
@@ -147,7 +147,7 @@ export const usePromptsStore = defineStore('prompts', () => {
   async function updatePrompt(id, updates) {
     const { getClient } = useSupabase()
     const supabase = getClient()
-    
+
     if (!supabase) {
       error.value = 'Not connected to Supabase'
       return null
@@ -165,7 +165,7 @@ export const usePromptsStore = defineStore('prompts', () => {
         .single()
 
       if (updateError) throw updateError
-      
+
       const index = prompts.value.findIndex(p => p.id === id)
       if (index !== -1) {
         prompts.value[index] = data
@@ -183,7 +183,7 @@ export const usePromptsStore = defineStore('prompts', () => {
   async function deletePrompt(id) {
     const { getClient } = useSupabase()
     const supabase = getClient()
-    
+
     if (!supabase) {
       error.value = 'Not connected to Supabase'
       return false
@@ -199,7 +199,7 @@ export const usePromptsStore = defineStore('prompts', () => {
         .eq('id', id)
 
       if (deleteError) throw deleteError
-      
+
       prompts.value = prompts.value.filter(p => p.id !== id)
       return true
     } catch (err) {
@@ -221,7 +221,7 @@ export const usePromptsStore = defineStore('prompts', () => {
   async function incrementCopyCount(id) {
     const { getClient } = useSupabase()
     const supabase = getClient()
-    
+
     if (!supabase) return false
 
     try {
@@ -230,7 +230,7 @@ export const usePromptsStore = defineStore('prompts', () => {
 
       const { data, error: updateError } = await supabase
         .from('prompts')
-        .update({ 
+        .update({
           copied_count: (prompt.copied_count || 0) + 1,
           last_copied_at: new Date().toISOString()
         })
@@ -239,7 +239,7 @@ export const usePromptsStore = defineStore('prompts', () => {
         .single()
 
       if (updateError) throw updateError
-      
+
       const index = prompts.value.findIndex(p => p.id === id)
       if (index !== -1) {
         prompts.value[index] = data
@@ -254,7 +254,7 @@ export const usePromptsStore = defineStore('prompts', () => {
   async function fetchPromptById(id) {
     const { getClient } = useSupabase()
     const supabase = getClient()
-    
+
     if (!supabase) {
       error.value = 'Not connected to Supabase'
       return null

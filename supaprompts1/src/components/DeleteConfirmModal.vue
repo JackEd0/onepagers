@@ -14,9 +14,9 @@ const emit = defineEmits(['confirm', 'cancel'])
 <template>
   <Teleport to="body">
     <div v-if="show" class="modal-backdrop fade show"></div>
-    <div 
-      v-if="show" 
-      class="modal fade show d-block" 
+    <div
+      v-if="show"
+      class="modal fade show d-block"
       tabindex="-1"
       @click.self="emit('cancel')"
     >
@@ -27,29 +27,29 @@ const emit = defineEmits(['confirm', 'cancel'])
               <i class="bi bi-exclamation-triangle me-2"></i>
               Delete {{ itemType }}?
             </h5>
-            <button 
-              type="button" 
-              class="btn-close" 
+            <button
+              type="button"
+              class="btn-close"
               @click="emit('cancel')"
             ></button>
           </div>
           <div class="modal-body">
             <p class="mb-0">
-              Are you sure you want to delete 
-              <strong>"{{ itemName }}"</strong>? 
+              Are you sure you want to delete
+              <strong>"{{ itemName }}"</strong>?
               This action cannot be undone.
             </p>
           </div>
           <div class="modal-footer border-0 pt-0">
-            <button 
-              type="button" 
+            <button
+              type="button"
               class="btn btn-outline-secondary"
               @click="emit('cancel')"
             >
               Cancel
             </button>
-            <button 
-              type="button" 
+            <button
+              type="button"
               class="btn btn-danger"
               @click="emit('confirm')"
             >

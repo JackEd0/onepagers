@@ -24,7 +24,7 @@ function clearSearch() {
     <div class="search-bar">
       <div class="search-input-group">
         <i class="bi bi-search search-icon"></i>
-        <input 
+        <input
           ref="searchInput"
           v-model="localSearch"
           type="text"
@@ -32,7 +32,7 @@ function clearSearch() {
           placeholder="Search prompts... (Ctrl+K)"
           @input="handleSearch"
         >
-        <button 
+        <button
           v-if="localSearch"
           class="btn btn-link search-clear"
           @click="clearSearch"
@@ -41,8 +41,8 @@ function clearSearch() {
         </button>
         <kbd class="search-shortcut d-none d-md-inline">⌘K</kbd>
       </div>
-      
-      <button 
+
+      <button
         class="btn btn-primary btn-new-prompt"
         @click="emit('new-prompt')"
       >

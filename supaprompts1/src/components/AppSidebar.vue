@@ -64,8 +64,8 @@ async function handleSaveCollection(data) {
     <nav class="sidebar-nav">
       <ul class="nav flex-column">
         <li class="nav-item">
-          <router-link 
-            to="/" 
+          <router-link
+            to="/"
             class="nav-link"
             :class="{ active: route.path === '/' && !collectionsStore.activeCollectionId }"
             @click="collectionsStore.clearActiveCollection()"
@@ -86,8 +86,8 @@ async function handleSaveCollection(data) {
       <div class="collections-section" v-if="settingsStore.isConnected">
         <div class="section-header">
           <span class="section-title">Collections</span>
-          <button 
-            class="btn btn-link btn-sm p-0 text-muted" 
+          <button
+            class="btn btn-link btn-sm p-0 text-muted"
             @click="openNewCollectionModal"
             title="Add Collection"
           >
@@ -95,7 +95,7 @@ async function handleSaveCollection(data) {
           </button>
         </div>
 
-        <CollectionList 
+        <CollectionList
           @edit="openEditCollectionModal"
         />
       </div>
@@ -119,9 +119,9 @@ async function handleSaveCollection(data) {
   </aside>
 
   <!-- Overlay for mobile -->
-  <div 
-    v-if="open" 
-    class="sidebar-overlay d-lg-none" 
+  <div
+    v-if="open"
+    class="sidebar-overlay d-lg-none"
     @click="emit('toggle')"
   ></div>
 </template>

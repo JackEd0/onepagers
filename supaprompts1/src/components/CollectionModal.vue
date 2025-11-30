@@ -26,9 +26,9 @@ function handleSubmit() {
 <template>
   <Teleport to="body">
     <div v-if="show" class="modal-backdrop fade show"></div>
-    <div 
-      v-if="show" 
-      class="modal fade show d-block" 
+    <div
+      v-if="show"
+      class="modal fade show d-block"
       tabindex="-1"
       @click.self="emit('close')"
     >
@@ -38,9 +38,9 @@ function handleSubmit() {
             <h5 class="modal-title fw-bold">
               {{ collection ? 'Edit Collection' : 'New Collection' }}
             </h5>
-            <button 
-              type="button" 
-              class="btn-close" 
+            <button
+              type="button"
+              class="btn-close"
               @click="emit('close')"
             ></button>
           </div>
@@ -48,7 +48,7 @@ function handleSubmit() {
             <div class="modal-body">
               <div class="mb-3">
                 <label class="form-label">Collection Name</label>
-                <input 
+                <input
                   v-model="name"
                   type="text"
                   class="form-control form-control-lg"
@@ -59,15 +59,15 @@ function handleSubmit() {
               </div>
             </div>
             <div class="modal-footer border-0 pt-0">
-              <button 
-                type="button" 
+              <button
+                type="button"
                 class="btn btn-outline-secondary"
                 @click="emit('close')"
               >
                 Cancel
               </button>
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 class="btn btn-primary"
                 :disabled="!name.trim()"
               >

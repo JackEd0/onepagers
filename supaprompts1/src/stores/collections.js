@@ -22,7 +22,7 @@ export const useCollectionsStore = defineStore('collections', () => {
   async function fetchCollections() {
     const { getClient } = useSupabase()
     const supabase = getClient()
-    
+
     if (!supabase) {
       error.value = 'Not connected to Supabase'
       return
@@ -50,7 +50,7 @@ export const useCollectionsStore = defineStore('collections', () => {
   async function createCollection(name) {
     const { getClient } = useSupabase()
     const supabase = getClient()
-    
+
     if (!supabase) {
       error.value = 'Not connected to Supabase'
       return null
@@ -70,7 +70,7 @@ export const useCollectionsStore = defineStore('collections', () => {
         .single()
 
       if (createError) throw createError
-      
+
       collections.value.push(data)
       return data
     } catch (err) {
@@ -85,7 +85,7 @@ export const useCollectionsStore = defineStore('collections', () => {
   async function updateCollection(id, updates) {
     const { getClient } = useSupabase()
     const supabase = getClient()
-    
+
     if (!supabase) {
       error.value = 'Not connected to Supabase'
       return null
@@ -103,7 +103,7 @@ export const useCollectionsStore = defineStore('collections', () => {
         .single()
 
       if (updateError) throw updateError
-      
+
       const index = collections.value.findIndex(c => c.id === id)
       if (index !== -1) {
         collections.value[index] = data
@@ -121,7 +121,7 @@ export const useCollectionsStore = defineStore('collections', () => {
   async function deleteCollection(id) {
     const { getClient } = useSupabase()
     const supabase = getClient()
-    
+
     if (!supabase) {
       error.value = 'Not connected to Supabase'
       return false
@@ -137,13 +137,13 @@ export const useCollectionsStore = defineStore('collections', () => {
         .eq('id', id)
 
       if (deleteError) throw deleteError
-      
+
       collections.value = collections.value.filter(c => c.id !== id)
-      
+
       if (activeCollectionId.value === id) {
         activeCollectionId.value = null
       }
-      
+
       return true
     } catch (err) {
       error.value = err.message
@@ -157,7 +157,7 @@ export const useCollectionsStore = defineStore('collections', () => {
   async function reorderCollections(reorderedIds) {
     const { getClient } = useSupabase()
     const supabase = getClient()
-    
+
     if (!supabase) {
       error.value = 'Not connected to Supabase'
       return false

@@ -43,7 +43,7 @@ export function useSupabase() {
     try {
       // Try to fetch from collections table to test connection
       const { error } = await supabase.from('collections').select('id').limit(1)
-      
+
       if (error) {
         settingsStore.setConnectionStatus(false, error.message)
         return false

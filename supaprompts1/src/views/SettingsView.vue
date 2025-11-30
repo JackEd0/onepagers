@@ -20,16 +20,16 @@ async function handleSave() {
 
   // Test connection
   const connected = await testConnection()
-  
+
   testing.value = false
-  
+
   if (connected) {
     saved.value = true
-    window.dispatchEvent(new CustomEvent('show-toast', { 
+    window.dispatchEvent(new CustomEvent('show-toast', {
       detail: { message: 'Connected successfully!', type: 'success' }
     }))
   } else {
-    window.dispatchEvent(new CustomEvent('show-toast', { 
+    window.dispatchEvent(new CustomEvent('show-toast', {
       detail: { message: settingsStore.connectionError || 'Failed to connect', type: 'error' }
     }))
   }
@@ -40,7 +40,7 @@ function handleClear() {
   anonKey.value = ''
   settingsStore.clearCredentials()
   saved.value = false
-  window.dispatchEvent(new CustomEvent('show-toast', { 
+  window.dispatchEvent(new CustomEvent('show-toast', {
     detail: { message: 'Credentials cleared', type: 'info' }
   }))
 }
@@ -87,9 +87,9 @@ onMounted(() => {
               <form @submit.prevent="handleSave">
                 <div class="mb-3">
                   <label class="form-label fw-medium">Supabase URL</label>
-                  <input 
+                  <input
                     v-model="url"
-                    type="url" 
+                    type="url"
                     class="form-control form-control-lg"
                     placeholder="https://your-project.supabase.co"
                     required
@@ -101,9 +101,9 @@ onMounted(() => {
 
                 <div class="mb-4">
                   <label class="form-label fw-medium">Anon Key</label>
-                  <input 
+                  <input
                     v-model="anonKey"
-                    type="password" 
+                    type="password"
                     class="form-control form-control-lg"
                     placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
                     required
@@ -114,8 +114,8 @@ onMounted(() => {
                 </div>
 
                 <div class="d-flex gap-2">
-                  <button 
-                    type="submit" 
+                  <button
+                    type="submit"
                     class="btn btn-primary btn-lg"
                     :disabled="testing"
                   >
@@ -123,8 +123,8 @@ onMounted(() => {
                     <i v-else class="bi bi-check-lg me-2"></i>
                     {{ testing ? 'Testing...' : 'Save & Connect' }}
                   </button>
-                  <button 
-                    type="button" 
+                  <button
+                    type="button"
                     class="btn btn-outline-danger btn-lg"
                     @click="handleClear"
                     :disabled="testing"
@@ -146,9 +146,9 @@ onMounted(() => {
             </div>
             <div class="card-body">
               <div class="form-check form-switch">
-                <input 
-                  class="form-check-input" 
-                  type="checkbox" 
+                <input
+                  class="form-check-input"
+                  type="checkbox"
                   id="darkModeToggle"
                   :checked="settingsStore.darkMode"
                   @change="settingsStore.toggleDarkMode()"
@@ -196,7 +196,7 @@ create table prompts (
   created_at timestamptz default now(),
   updated_at timestamptz default now()
 );</code></pre>
-              <button 
+              <button
                 class="btn btn-outline-secondary btn-sm mt-2"
                 @click="navigator.clipboard.writeText($refs.sqlCode?.textContent || '')"
               >

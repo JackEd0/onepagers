@@ -51,7 +51,7 @@ function toggleSidebar() {
 <template>
   <div class="app-container" :class="{ 'sidebar-collapsed': !sidebarOpen }">
     <AppSidebar :open="sidebarOpen" @toggle="toggleSidebar" />
-    
+
     <main class="main-content">
       <AppHeader @toggle-sidebar="toggleSidebar" />
       <div class="content-wrapper">

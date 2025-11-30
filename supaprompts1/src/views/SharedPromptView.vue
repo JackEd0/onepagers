@@ -28,11 +28,11 @@ const finalPrompt = computed(() => {
 async function fetchPrompt() {
   loading.value = true
   error.value = null
-  
+
   try {
     const id = route.params.id
     prompt.value = await promptsStore.fetchPromptById(id)
-    
+
     if (!prompt.value) {
       error.value = 'Prompt not found'
     } else {
@@ -50,7 +50,7 @@ async function fetchPrompt() {
 
 async function copyPrompt() {
   const textToCopy = hasVariables.value ? finalPrompt.value : prompt.value.template
-  
+
   try {
     await navigator.clipboard.writeText(textToCopy)
     copied.value = true
@@ -63,7 +63,7 @@ async function copyPrompt() {
 async function addToMyPrompts() {
   // This would require authentication in the future
   // For now, just show a message
-  window.dispatchEvent(new CustomEvent('show-toast', { 
+  window.dispatchEvent(new CustomEvent('show-toast', {
     detail: { message: 'Connect to your Supabase to save this prompt!', type: 'info' }
   }))
 }
@@ -115,8 +115,8 @@ onMounted(fetchPrompt)
 
                 <!-- Tags -->
                 <div v-if="prompt.tags?.length" class="mb-4">
-                  <span 
-                    v-for="tag in prompt.tags" 
+                  <span
+                    v-for="tag in prompt.tags"
                     :key="tag"
                     class="badge bg-secondary me-2"
                   >
@@ -131,13 +131,13 @@ onMounted(fetchPrompt)
                     Fill in Variables
                   </h5>
                   <div class="row g-3">
-                    <div 
-                      v-for="variable in variables" 
+                    <div
+                      v-for="variable in variables"
                       :key="variable"
                       class="col-12 col-md-6"
                     >
                       <label class="form-label">{{ variable }}</label>
-                      <input 
+                      <input
                         v-model="variableValues[variable]"
                         type="text"
                         class="form-control"
@@ -160,14 +160,14 @@ onMounted(fetchPrompt)
 
                 <!-- Actions -->
                 <div class="d-flex gap-2 flex-wrap">
-                  <button 
+                  <button
                     class="btn btn-primary btn-lg"
                     @click="copyPrompt"
                   >
                     <i class="bi me-2" :class="copied ? 'bi-check-lg' : 'bi-clipboard'"></i>
                     {{ copied ? 'Copied!' : 'Copy Prompt' }}
                   </button>
-                  <button 
+                  <button
                     class="btn btn-outline-primary btn-lg"
                     @click="addToMyPrompts"
                   >

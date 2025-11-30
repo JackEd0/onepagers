@@ -17,7 +17,8 @@ html {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -27,7 +28,12 @@ body {
 }
 
 /* Typography */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 600;
   letter-spacing: -0.02em;
 }
@@ -65,8 +71,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-primary {
-  --bs-btn-bg: #007AFF;
-  --bs-btn-border-color: #007AFF;
+  --bs-btn-bg: #007aff;
+  --bs-btn-border-color: #007aff;
   --bs-btn-hover-bg: #0056b3;
   --bs-btn-hover-border-color: #0056b3;
 }
@@ -122,7 +128,12 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Loading Skeleton */
 .skeleton {
-  background: linear-gradient(90deg, var(--bs-tertiary-bg) 25%, var(--bs-secondary-bg) 50%, var(--bs-tertiary-bg) 75%);
+  background: linear-gradient(
+    90deg,
+    var(--bs-tertiary-bg) 25%,
+    var(--bs-secondary-bg) 50%,
+    var(--bs-tertiary-bg) 75%
+  );
   background-size: 200% 100%;
   animation: skeleton-loading 1.5s infinite;
   border-radius: 0.5rem;
