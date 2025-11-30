@@ -145,8 +145,9 @@ async function handleSaveCollection(data) {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 1.25rem;
+  padding: 1.1rem 1.25rem;
   border-bottom: 1px solid var(--bs-border-color);
+  min-height: 70px;
 }
 
 .sidebar-brand {

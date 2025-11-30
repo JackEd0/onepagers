@@ -41,12 +41,13 @@ const settingsStore = useSettingsStore()
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.75rem 1.5rem;
+  padding: 0.5rem 1.5rem;
   background: var(--bs-body-bg);
   border-bottom: 1px solid var(--bs-border-color);
   position: sticky;
   top: 0;
   z-index: 1020;
+  min-height: 70px;
 }
 
 .header-left,
