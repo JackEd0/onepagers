@@ -9,24 +9,24 @@
   --np-text-secondary: #86868b;
   --np-text-tertiary: #6e6e73;
   --np-border: rgba(0, 0, 0, 0.1);
-  --np-accent: #007AFF;
+  --np-accent: #007aff;
   --np-accent-hover: #0056b3;
   --np-shadow: rgba(0, 0, 0, 0.08);
   --np-card-bg: rgba(255, 255, 255, 0.8);
   --np-sidebar-bg: rgba(245, 245, 247, 0.95);
   --np-modal-bg: rgba(255, 255, 255, 0.95);
-  
+
   /* Spacing */
   --np-sidebar-width: 280px;
   --np-header-height: 70px;
-  
+
   /* Typography */
   --np-font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  
+
   /* Transitions */
   --np-transition-fast: 0.15s ease;
   --np-transition-normal: 0.25s ease;
-  
+
   /* Border radius */
   --np-radius-sm: 8px;
   --np-radius-md: 12px;
@@ -35,7 +35,7 @@
 }
 
 /* Dark Mode */
-[data-bs-theme="dark"] {
+[data-bs-theme='dark'] {
   --np-bg-primary: #000000;
   --np-bg-secondary: #1c1c1e;
   --np-bg-tertiary: #2c2c2e;
@@ -54,7 +54,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -468,7 +469,7 @@ body {
 
 .favorite-btn:hover,
 .favorite-btn.active {
-  color: #FFD60A;
+  color: #ffd60a;
 }
 
 .favorite-btn.active {
@@ -476,8 +477,13 @@ body {
 }
 
 @keyframes favorite-pop {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.3); }
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
 }
 
 /* Empty State */

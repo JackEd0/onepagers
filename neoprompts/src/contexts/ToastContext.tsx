@@ -22,7 +22,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
   const showToast = useCallback((message: string, type: Toast['type'] = 'info') => {
     const id = Math.random().toString(36).slice(2);
     setToasts(prev => [...prev, { id, message, type }]);
-    
+
     // Auto dismiss after 3 seconds
     setTimeout(() => {
       setToasts(prev => prev.filter(t => t.id !== id));

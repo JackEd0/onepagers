@@ -13,6 +13,7 @@ AI agents rely on this file (AGENTS.md) to understand the project and continue w
 **NeoPrompts** is a personal AI prompt manager web application built with Next.js, Bootstrap 5, and IndexedDB (via Dexie.js). It provides a fast, beautiful, private prompt library with an Apple-inspired aesthetic.
 
 ### Tech Stack
+
 - **Framework**: Next.js 14+ (App Router)
 - **UI Library**: Bootstrap 5.3 + Custom Apple-inspired CSS
 - **Database**: IndexedDB via Dexie.js (local, private)
@@ -20,6 +21,7 @@ AI agents rely on this file (AGENTS.md) to understand the project and continue w
 - **Icons**: Bootstrap Icons
 
 ### Project Structure
+
 ```
 src/
 ├── app/

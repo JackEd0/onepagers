@@ -3,18 +3,21 @@
 ## Core Features
 
 ### 1. Search & Discovery
+
 - [ ] Huge centered search bar with keyboard shortcut (Ctrl+K or Ctrl+P)
 - [ ] Instant full-text search across title, template, tags, and description
 - [ ] Filter by: Tags (multi-select) | Favorites only | Collection
 - [ ] Sort by: Last created | Last copied | Most copied | Title A–Z
 
 ### 2. Collections
+
 - [ ] Flat list displayed in sidebar
 - [ ] Drag & drop to reorder collections
 - [ ] CRUD operations (create, read, update, delete)
 - [ ] Collection icon/emoji support
 
 ### 3. Prompts
+
 - [ ] Card view with: Title, Preview, Tags, Favorite star, Copy button
 - [ ] CRUD operations (create, read, update, delete)
 - [ ] Support for `{{variable}}` placeholders
@@ -22,18 +25,21 @@
 - [ ] Last copied timestamp
 
 ### 4. Quick Use Modal
+
 - [ ] Detect `{{variables}}` in prompt template
 - [ ] Generate form fields for each variable
 - [ ] Preview rendered prompt
 - [ ] Copy final rendered prompt to clipboard
 
 ### 5. Settings
+
 - [ ] Theme toggle (light/dark/system)
 - [ ] Export prompts and collections to JSON
 - [ ] Import prompts and collections from JSON
 - [ ] Clear all data button
 
 ### 6. UI/UX
+
 - [ ] Responsive design (mobile-first)
 - [ ] Dark mode support
 - [ ] Apple-inspired aesthetic (blur, typography, whitespace, rounded corners)
@@ -43,6 +49,7 @@
 ## Technical Requirements
 
 ### Dependencies
+
 - Next.js 14+ (App Router)
 - Bootstrap 5.3+
 - Bootstrap Icons
@@ -52,6 +59,7 @@
 ### Data Models
 
 #### Collection
+
 ```typescript
 interface Collection {
   id: string;
@@ -64,6 +72,7 @@ interface Collection {
 ```
 
 #### Prompt
+
 ```typescript
 interface Prompt {
   id: string;
@@ -81,6 +90,7 @@ interface Prompt {
 ```
 
 #### Tag
+
 ```typescript
 interface Tag {
   id: string;
@@ -90,12 +100,14 @@ interface Tag {
 ```
 
 ### Browser Compatibility
+
 - Chrome 90+
 - Firefox 90+
 - Safari 14+
 - Edge 90+
 
 ## Future Enhancements
+
 - [ ] Prompt versioning/history
 - [ ] Nested collections
 - [ ] Prompt sharing via URL

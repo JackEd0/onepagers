@@ -46,11 +46,11 @@ Open [http://localhost:3000](http://localhost:3000) to view NeoPrompts.
 
 ## Keyboard Shortcuts
 
-| Shortcut | Action |
-|----------|--------|
+| Shortcut             | Action           |
+| -------------------- | ---------------- |
 | `Ctrl+K` or `Ctrl+P` | Focus search bar |
-| `Ctrl+N` | New prompt |
-| `Escape` | Close modals |
+| `Ctrl+N`             | New prompt       |
+| `Escape`             | Close modals     |
 
 ## Data Privacy
 
