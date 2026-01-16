@@ -73,8 +73,8 @@ export function usePrompts(filters?: Partial<PromptFilters>) {
       );
     }
 
-    // Filter by collection
-    if (filters?.collectionId !== undefined) {
+    // Filter by collection (only when a specific collection ID is provided)
+    if (filters?.collectionId) {
       results = results.filter(p => p.collectionId === filters.collectionId);
     }
 
