@@ -236,9 +236,12 @@ export default function Sidebar({
                   </div>
                 </div>
               ) : (
-                <button
+                <div
                   className={`sidebar-item ${selectedCollectionId === collection.id ? 'active' : ''}`}
                   onClick={() => onSelectCollection(collection.id)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => e.key === 'Enter' && onSelectCollection(collection.id)}
                 >
                   <span className="sidebar-item-emoji">{collection.emoji}</span>
                   <span className="sidebar-item-text">{collection.name}</span>
@@ -258,7 +261,7 @@ export default function Sidebar({
                       <i className="bi bi-trash"></i>
                     </button>
                   </div>
-                </button>
+                </div>
               )}
             </div>
           ))}
