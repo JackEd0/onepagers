@@ -49,6 +49,10 @@
 - [x] T027: Mobile responsive testing
 - [x] T028: Final UI polish and Apple aesthetic refinement
 
+## Phase 8: Sample Data
+
+- [x] T029: Add sample prompts and collections for demo purposes
+
 ## Completed
 
 All tasks completed! 🎉

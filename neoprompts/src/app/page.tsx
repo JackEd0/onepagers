@@ -12,10 +12,12 @@ import ToastContainer from '@/components/ToastContainer';
 import { usePrompts, useCollections, PromptFilters } from '@/lib/hooks';
 import { Prompt } from '@/lib/db';
 import { useToast } from '@/contexts/ToastContext';
+import { seedSampleData } from '@/lib/sampleData';
 
 export default function Home() {
   const { showToast } = useToast();
   const { collections } = useCollections();
+  const [isSeeding, setIsSeeding] = useState(true);
 
   // Filter state
   const [search, setSearch] = useState('');
@@ -43,6 +45,18 @@ export default function Home() {
   };
 
   const { prompts, addPrompt, updatePrompt, deletePrompt, toggleFavorite, incrementCopyCount } = usePrompts(filters);
+
+  // Seed sample data on first load
+  useEffect(() => {
+    seedSampleData().then((result) => {
+      if (result.prompts > 0) {
+        showToast(`Loaded ${result.prompts} sample prompts!`, 'success');
+      }
+      setIsSeeding(false);
+    }).catch(() => {
+      setIsSeeding(false);
+    });
+  }, []);
 
   // Keyboard shortcuts
   useEffect(() => {
