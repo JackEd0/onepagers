@@ -83,13 +83,13 @@ export default function Sidebar({
     setDraggedId(null);
   }, [draggedId, collections, reorderCollections]);
 
-  const emojis = ['📁', '💡', '🚀', '💻', '📝', '🎨', '⚡', '🔥', '💎', '🌟', '📚', '🛠️'];
+  const emojis = ['📁', '💡', '🚀', '💻', '📝', '🎨', '✨', '🔥', '💎', '🌟', '📚', '🛠️'];
 
   return (
     <aside className="sidebar">
       <div className="sidebar-header">
         <div className="d-flex align-items-center gap-2">
-          <span className="sidebar-logo">✨</span>
+          <span className="sidebar-logo">⚡</span>
           <h1 className="sidebar-title">NeoPrompts</h1>
         </div>
       </div>
