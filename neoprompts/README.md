@@ -54,7 +54,69 @@ Open [http://localhost:3000](http://localhost:3000) to view NeoPrompts.
 
 ## Data Privacy
 
-NeoPrompts stores all data locally in your browser using IndexedDB. No data is sent to any server. You can export/import your data as JSON for backup or migration.
+NeoPrompts stores all data locally in your browser using IndexedDB by default. No data is sent to any server. You can optionally enable cloud sync with Supabase for cross-device access.
+
+You can export/import your data as JSON for backup or migration.
+
+## Deployment
+
+### Option 1: Local Only (Default)
+
+Deploy to any static hosting or Node.js platform. Users get private local storage with no setup required.
+
+```bash
+# Build for production
+npm run build
+
+# Start production server
+npm start
+```
+
+### Option 2: With Cloud Database (Supabase)
+
+Enable optional cloud sync so users can access prompts across devices.
+
+#### 1. Create Supabase Project
+
+1. Go to [supabase.com](https://supabase.com) and create a new project
+2. In the SQL Editor, run the schema from `supabase-schema.sql`
+3. Go to **Settings > API** and copy your project URL and anon key
+
+#### 2. Configure Environment Variables
+
+Create `.env.local` (or set in your hosting platform):
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+```
+
+#### 3. Deploy to Vercel
+
+```bash
+# Install Vercel CLI
+npm i -g vercel
+
+# Deploy
+vercel
+```
+
+Or connect your GitHub repo to [vercel.com](https://vercel.com) for automatic deployments.
+
+**Environment Variables in Vercel:**
+
+1. Go to your project settings
+2. Add `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+3. Redeploy
+
+### Database Modes
+
+Users can switch between modes in **Settings > Database**:
+
+- **Local (Private)** – Data stored in browser's IndexedDB, never leaves device
+- **Cloud** – Data synced to Supabase (only available when configured)
+
+Sync buttons allow migrating data between local and cloud storage.
 
 ## License
 
