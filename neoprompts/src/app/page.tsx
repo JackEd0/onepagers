@@ -9,14 +9,15 @@ import PromptModal from '@/components/PromptModal';
 import QuickUseModal from '@/components/QuickUseModal';
 import SettingsModal from '@/components/SettingsModal';
 import ToastContainer from '@/components/ToastContainer';
-import { usePrompts, useCollections, PromptFilters } from '@/lib/hooks';
-import { Prompt } from '@/lib/db';
+import { usePrompts, useCollections, PromptFilters } from '@/lib/hooks-db';
+import { Prompt } from '@/lib/database';
 import { useToast } from '@/contexts/ToastContext';
-import { seedSampleData } from '@/lib/sampleData';
+import { useDatabase } from '@/lib/database';
 
 export default function Home() {
   const { showToast } = useToast();
   const { collections } = useCollections();
+  const { adapter, refreshData } = useDatabase();
   const [isSeeding, setIsSeeding] = useState(true);
 
   // Filter state
@@ -48,15 +49,38 @@ export default function Home() {
 
   // Seed sample data on first load
   useEffect(() => {
-    seedSampleData().then((result) => {
-      if (result.prompts > 0) {
-        showToast(`Loaded ${result.prompts} sample prompts!`, 'success');
+    const seedData = async () => {
+      try {
+        const existingPrompts = await adapter.getPrompts();
+        if (existingPrompts.length === 0) {
+          // Import sample data module dynamically
+          const { sampleCollections, sampleTags, samplePrompts } = await import('@/lib/sampleData');
+
+          // Add collections
+          for (const collection of sampleCollections) {
+            await adapter.addCollection(collection);
+          }
+
+          // Add tags
+          for (const tag of sampleTags) {
+            await adapter.addTag(tag);
+          }
+
+          // Add prompts
+          for (const prompt of samplePrompts) {
+            await adapter.addPrompt(prompt);
+          }
+
+          await refreshData();
+          showToast(`Loaded ${samplePrompts.length} sample prompts!`, 'success');
+        }
+      } catch (error) {
+        console.error('Failed to seed data:', error);
       }
       setIsSeeding(false);
-    }).catch(() => {
-      setIsSeeding(false);
-    });
-  }, []);
+    };
+    seedData();
+  }, [adapter, refreshData]);
 
   // Keyboard shortcuts
   useEffect(() => {

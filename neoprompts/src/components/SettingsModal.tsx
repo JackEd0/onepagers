@@ -3,7 +3,7 @@
 import { useState, useRef } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { useToast } from '@/contexts/ToastContext';
-import { exportData, importData, clearAllData } from '@/lib/db';
+import { useDatabase } from '@/lib/database';
 
 interface SettingsModalProps {
   isOpen: boolean;
@@ -13,13 +13,15 @@ interface SettingsModalProps {
 export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
   const { theme, setTheme } = useTheme();
   const { showToast } = useToast();
+  const { adapter, mode, setMode, isCloudAvailable, isSyncing, syncToCloud, syncFromCloud, refreshData } = useDatabase();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [isImporting, setIsImporting] = useState(false);
 
   const handleExport = async () => {
     try {
-      const data = await exportData();
-      const blob = new Blob([data], { type: 'application/json' });
+      const data = await adapter.exportData();
+      const jsonString = JSON.stringify({ ...data, exportedAt: new Date().toISOString() }, null, 2);
+      const blob = new Blob([jsonString], { type: 'application/json' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
@@ -41,8 +43,10 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
     setIsImporting(true);
     try {
       const text = await file.text();
-      const result = await importData(text);
-      showToast(`Imported ${result.prompts} prompts, ${result.collections} collections, ${result.tags} tags`, 'success');
+      const data = JSON.parse(text);
+      await adapter.importData(data);
+      await refreshData();
+      showToast(`Imported ${data.prompts?.length || 0} prompts, ${data.collections?.length || 0} collections, ${data.tags?.length || 0} tags`, 'success');
       onClose();
     } catch (error) {
       showToast('Failed to import data. Check the file format.', 'error');
@@ -58,13 +62,41 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
     if (confirm('Are you sure you want to delete ALL data? This cannot be undone.')) {
       if (confirm('This will permanently delete all prompts, collections, and tags. Continue?')) {
         try {
-          await clearAllData();
+          await adapter.clearAll();
+          await refreshData();
           showToast('All data cleared', 'success');
           onClose();
         } catch (error) {
           showToast('Failed to clear data', 'error');
         }
       }
+    }
+  };
+
+  const handleModeChange = async (newMode: 'local' | 'cloud') => {
+    try {
+      await setMode(newMode);
+      showToast(`Switched to ${newMode === 'local' ? 'Local (Private)' : 'Cloud'} database`, 'success');
+    } catch (error) {
+      showToast('Failed to switch database mode', 'error');
+    }
+  };
+
+  const handleSyncToCloud = async () => {
+    try {
+      await syncToCloud();
+      showToast('Data synced to cloud!', 'success');
+    } catch (error) {
+      showToast('Failed to sync to cloud', 'error');
+    }
+  };
+
+  const handleSyncFromCloud = async () => {
+    try {
+      await syncFromCloud();
+      showToast('Data synced from cloud!', 'success');
+    } catch (error) {
+      showToast('Failed to sync from cloud', 'error');
     }
   };
 
@@ -82,6 +114,59 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
             <button type="button" className="btn-close" onClick={onClose}></button>
           </div>
           <div className="modal-body">
+            {/* Database Mode */}
+            <div className="mb-4">
+              <h6 className="mb-3">
+                <i className="bi bi-database me-2"></i>
+                Database
+              </h6>
+              <div className="btn-group w-100 mb-3" role="group">
+                <button
+                  type="button"
+                  className={`btn ${mode === 'local' ? 'btn-primary' : 'btn-outline-secondary'}`}
+                  onClick={() => handleModeChange('local')}
+                >
+                  <i className="bi bi-hdd me-1"></i>
+                  Local (Private)
+                </button>
+                <button
+                  type="button"
+                  className={`btn ${mode === 'cloud' ? 'btn-primary' : 'btn-outline-secondary'}`}
+                  onClick={() => handleModeChange('cloud')}
+                  disabled={!isCloudAvailable}
+                >
+                  <i className="bi bi-cloud me-1"></i>
+                  Cloud
+                </button>
+              </div>
+              {!isCloudAvailable && (
+                <small className="text-muted d-block mb-2">
+                  <i className="bi bi-info-circle me-1"></i>
+                  Cloud database not configured. Set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY environment variables.
+                </small>
+              )}
+              {isCloudAvailable && (
+                <div className="d-flex gap-2">
+                  <button
+                    className="btn btn-outline-secondary btn-sm flex-fill"
+                    onClick={handleSyncToCloud}
+                    disabled={isSyncing}
+                  >
+                    <i className="bi bi-cloud-upload me-1"></i>
+                    {isSyncing ? 'Syncing...' : 'Sync to Cloud'}
+                  </button>
+                  <button
+                    className="btn btn-outline-secondary btn-sm flex-fill"
+                    onClick={handleSyncFromCloud}
+                    disabled={isSyncing}
+                  >
+                    <i className="bi bi-cloud-download me-1"></i>
+                    {isSyncing ? 'Syncing...' : 'Sync from Cloud'}
+                  </button>
+                </div>
+              )}
+            </div>
+
             {/* Theme */}
             <div className="mb-4">
               <h6 className="mb-3">Appearance</h6>

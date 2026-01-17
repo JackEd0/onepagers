@@ -3,6 +3,7 @@
 import { ReactNode, useEffect } from 'react';
 import { ThemeProvider } from '@/contexts/ThemeContext';
 import { ToastProvider } from '@/contexts/ToastContext';
+import { DatabaseProvider } from '@/lib/database';
 
 export function Providers({ children }: { children: ReactNode }) {
   // Initialize Bootstrap JS on client side
@@ -13,9 +14,11 @@ export function Providers({ children }: { children: ReactNode }) {
 
   return (
     <ToastProvider>
-      <ThemeProvider>
-        {children}
-      </ThemeProvider>
+      <DatabaseProvider>
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
+      </DatabaseProvider>
     </ToastProvider>
   );
 }
